@@ -12,6 +12,6 @@ namespace App\Http\Controllers\Auth;
 class UserController
 {
 function index(){
-    return view("welcome");
+    return view("about");
 }
 }
