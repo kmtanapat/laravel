@@ -17,3 +17,4 @@ Route::get('/', function () {
 Route::get('foo', function () {
     return 'Hello World';
 });
+Route::get('/user', 'Auth\UserController@index');
