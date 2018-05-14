@@ -19,3 +19,7 @@ Route::get('foo', function () {
 });
 Route::get('/user', 'Auth\UserController@index');
 Route::get('/dog','Controller@dog');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
