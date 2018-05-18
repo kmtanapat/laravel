@@ -48,6 +48,17 @@
 
   <div class="container">
     <h1>All Candidates</h1>
+
+    <?php
+    if(isset($text)){
+      ?>
+    <div class="alert alert-success" role="alert">
+      {{$text}}
+    </div>
+    <?php
+  }
+    ?>
+
     <form class="form-inline form-group mb-2" action="search">
       Search:&nbsp;
       <input type="text" name="search" class="form-control">&nbsp;
