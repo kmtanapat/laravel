@@ -44,7 +44,8 @@ class CandidateController extends Controller
       " VALUES ( NULL, :name, :surname, :dateOfBirth, :gender, :tel, :statusId, :remark)",
     [$_GET["name"], $_GET["surname"], $_GET["dob"], $_GET["gender"], $_GET["tel"], $_GET["statusId"], $_GET["remark"]]);
 
-      return redirect('/');
+      $recent = DB::select("SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId ORDER BY candidateId DESC LIMIT 1");
+      return view('candidates', ['candidates' => $recent]);
 
     }
 
