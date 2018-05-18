@@ -18,4 +18,6 @@ Route::get('foo', function () {
     return 'Hello World';
 });
 Route::get('/user', 'Auth\UserController@index');
-Route::get('/dog','Controller@dog');
+
+Route::get('/candidates', 'CandidateController@index');
+Route::get('/search','CandidateController@search');
