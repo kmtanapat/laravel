@@ -74,7 +74,7 @@
         <td>{{ $candi->gender }}</td>
         <td>{{ $candi->tel }}</td>
         <td>{{ $candi->dateOfBirth }} ({{date("Y")-$year}} years old) </td>
-        <td></td>
+        <td>{{ $candi->statusN }}</td>
         <td>{{ $candi->remark }}</td>
       </tr>
       @endforeach

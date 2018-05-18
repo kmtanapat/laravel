@@ -13,7 +13,7 @@ class CandidateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $sql = 'SELECT * FROM candidates';
+        $sql = 'SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId';
         $candidates = DB::select($sql);
         return view('candidates',['candidates' => $candidates]);
     }
@@ -21,7 +21,7 @@ class CandidateController extends Controller
     public function search()
     {
       $search =$_GET["search"];
-      $sql = "SELECT * FROM candidates WHERE name LIKE '%".$search."%' OR surname LIKE '%".$search."%' OR remark LIKE '%".$search."%'";
+      $sql = "SELECT c.*, s.statusName as statusN  FROM candidates c JOIN status s ON s.statusId = c.statusId WHERE name LIKE '%".$search."%' OR surname LIKE '%".$search."%' OR remark LIKE '%".$search."%'";
       $candidates = DB::select($sql);
       return view('candidates',['candidates' => $candidates]);
 
