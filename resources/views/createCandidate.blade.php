@@ -39,57 +39,76 @@
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+
     </div>
   </nav>
 
   <div class="container">
-    <h1>All Candidates</h1>
+    <h1>Add Candidate Data</h1>
+    <form action="save">
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="surname">Surname: </label>
+            <input type="text" id="surname" name="surname" class="form-control" required>
+          </div>
+        </div>
+      </div>
 
-    <?php
-    if(isset($text)){
-      ?>
-    <div class="alert alert-success" role="alert">
-      {{$text}}
-    </div>
-    <?php
-  }
-    ?>
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="dob">Date of Birth: </label>
+            <input type="date" id="dob" name="dob" class="form-control" required>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="gender">Gender: </label>
+            <select class="form-control" id="gender" name="gender" required>
+              <option>---</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-    <form class="form-inline form-group mb-2" action="search">
-      Search:&nbsp;
-      <input type="text" name="search" class="form-control">&nbsp;
-      <input type="submit" value="search" class="btn btn-success">
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="tel">Telephone Number: </label>
+            <input type="text" id="tel" name="tel" class="form-control" required>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="status">Status: </label>
+            <select class="form-control" id="gender" name="statusId" required>
+              <option>---</option>
+              @foreach ($status as $s)
+              <option value="{{$s->statusId}}">{{$s->statusName}}</option>
+              @endforeach
+
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        Remark:
+        <textarea name="remark" class="form-control"></textarea>
+      </div>
+      <div style="text-align:center">
+        <input type="submit" class="btn btn-success" value="Save">
+      </div>
     </form>
-
-    <table class="table table-hover table-bordered" style="width:100%">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Surname</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Tel</th>
-          <th scope="col">Birthday</th>
-          <th scope="col">Status</th>
-          <th scope="col">Remark</th>
-        </tr>
-      </thead>
-      @foreach ($candidates as $candi)
-      <?php $year =  date('Y', strtotime($candi->dateOfBirth));?>
-      <tr>
-        <td>{{ $candi->name }}</td>
-        <td>{{ $candi->surname }}</td>
-        <td>{{ $candi->gender }}</td>
-        <td>{{ $candi->tel }}</td>
-        <td>{{ $candi->dateOfBirth }} ({{date("Y")-$year}} years old) </td>
-        <td>{{ $candi->statusN }}</td>
-        <td>{{ $candi->remark }}</td>
-      </tr>
-      @endforeach
-    </table>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -97,13 +116,6 @@
   <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-  <script>
-  $(document).ready(function() {
-    $('#dataTable').DataTable();
-  } );
-  </script>
-
-
 
 </body>
 </html>
