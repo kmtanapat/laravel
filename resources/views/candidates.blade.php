@@ -52,11 +52,11 @@
     <?php
     if(isset($text)){
       ?>
-    <div class="alert alert-success" role="alert">
-      {{$text}}
-    </div>
-    <?php
-  }
+      <div class="alert alert-success" role="alert">
+        {{$text}}
+      </div>
+      <?php
+    }
     ?>
 
     <form class="form-inline form-group mb-2" action="search">
@@ -68,13 +68,29 @@
     <table class="table table-hover table-bordered" style="width:100%">
       <thead class="thead-light">
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Surname</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Tel</th>
-          <th scope="col">Birthday</th>
-          <th scope="col">Status</th>
-          <th scope="col">Remark</th>
+          <?php
+          if(isset($order) && $order == 'ASC'){
+            ?>
+            <th scope="col"><a href="/sort/name/DESC">Name</a></th>
+            <th scope="col"><a href="/sort/surname/DESC">Surname</a></th>
+            <th scope="col">Gender</th>
+            <th scope="col">Tel</th>
+            <th scope="col">Birthday</th>
+            <th scope="col"><a href="/sort/statusId/DESC">Status</a></th>
+            <th scope="col">Remark</th>
+            <?php
+          }else{
+            ?>
+            <th scope="col"><a href="/sort/name/ASC">Name</a></th>
+            <th scope="col"><a href="/sort/surname/ASC">Surname</a></th>
+            <th scope="col">Gender</th>
+            <th scope="col">Tel</th>
+            <th scope="col">Birthday</th>
+            <th scope="col"><a href="/sort/statusId/ASC">Status</a></th>
+            <th scope="col">Remark</th>
+            <?php
+          }
+          ?>
         </tr>
       </thead>
       @foreach ($candidates as $candi)
@@ -102,8 +118,6 @@
     $('#dataTable').DataTable();
   } );
   </script>
-
-
 
 </body>
 </html>

@@ -46,61 +46,69 @@ class CandidateController extends Controller
 
     $recent = DB::select("SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId ORDER BY candidateId DESC LIMIT 1");
     return view('candidates', ['candidates' => $recent, 'text'=>"Candidate added."]);
-
   }
 
-  /**
-  * Store a newly created resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @return \Illuminate\Http\Response
-  */
-  public function store(Request $request){
-    //
-  }
+  public function sort(Request $request, $sortby, $order){
+    $sql = 'SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId ORDER BY '.$sortby.' '.$order;
+    $candidates = DB::select($sql);
+    return view('candidates',
+    ['candidates' => $candidates,
+    'order'=>$order]
+  );
+}
 
-  /**
-  * Display the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function show($id)
-  {
-    //
-  }
+/**
+* Store a newly created resource in storage.
+*
+* @param  \Illuminate\Http\Request  $request
+* @return \Illuminate\Http\Response
+*/
+public function store(Request $request){
+  //
+}
 
-  /**
-  * Show the form for editing the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function edit($id)
-  {
-    //
-  }
+/**
+* Display the specified resource.
+*
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+public function show($id)
+{
+  //
+}
 
-  /**
-  * Update the specified resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function update(Request $request, $id)
-  {
-    //
-  }
+/**
+* Show the form for editing the specified resource.
+*
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+public function edit($id)
+{
+  //
+}
 
-  /**
-  * Remove the specified resource from storage.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function destroy($id)
-  {
-    //
-  }
+/**
+* Update the specified resource in storage.
+*
+* @param  \Illuminate\Http\Request  $request
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+public function update(Request $request, $id)
+{
+  //
+}
+
+/**
+* Remove the specified resource from storage.
+*
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+public function destroy($id)
+{
+  //
+}
 }
