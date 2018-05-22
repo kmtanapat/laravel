@@ -50,22 +50,31 @@
   </nav>
 
   <div class="container">
+    @if(isset($text))
+    <div class="alert alert-success" role="alert">
+      Add successful
+    </div>
+    @endif
     <h1>All Status</h1>
     <p>
-    <a class="btn btn-success" href="/newStatus">New Status</a>
-  </p>
-      <table class="table table-hover table-bordered">
-        <thead class="thead-light">
+      <a class="btn btn-success" href="/newStatus">New Status</a>
+    </p>
+    <table class="table table-hover table-bordered">
+      <thead class="thead-light">
         <tr>
           <td>Name</td>
           <td>Current Candidates</td>
           <td>Description</td>
         </tr>
-        </thead>
+      </thead>
       @foreach ($status as $s)
       <tr>
         <td>{{ $s->statusName }}</td>
+        @if($s->amount == null)
+        <td>0 people</td>
+        @else
         <td>{{ $s->amount }} people</td>
+        @endif
         <td>{{ $s->description }}</td>
       </tr>
       @endforeach
