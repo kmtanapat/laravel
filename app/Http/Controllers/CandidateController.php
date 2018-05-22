@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CandidateController extends Controller
-{
+class CandidateController extends Controller{
   /**
   * Display a listing of the resource.
   *
@@ -18,8 +17,7 @@ class CandidateController extends Controller
     return view('candidates',['candidates' => $candidates]);
   }
 
-  public function search()
-  {
+  public function search(){
     $search =$_GET["search"];
     $sql = "SELECT c.*, s.statusName as statusN  FROM candidates c JOIN status s ON s.statusId = c.statusId WHERE name LIKE '%".$search."%' OR surname LIKE '%".$search."%' OR remark LIKE '%".$search."%'";
     $candidates = DB::select($sql);
@@ -46,61 +44,94 @@ class CandidateController extends Controller
 
     $recent = DB::select("SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId ORDER BY candidateId DESC LIMIT 1");
     return view('candidates', ['candidates' => $recent, 'text'=>"Candidate added."]);
-
   }
 
-  /**
-  * Store a newly created resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @return \Illuminate\Http\Response
-  */
-  public function store(Request $request){
-    //
+  public function sort(Request $request, $sortby, $order){
+    $sql = 'SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId ORDER BY '.$sortby.' '.$order;
+    $candidates = DB::select($sql);
+    return view('candidates',
+    ['candidates' => $candidates,
+    'order'=>$order]
+  );
+}
+
+/**
+* Store a newly created resource in storage.
+*
+* @param  \Illuminate\Http\Request  $request
+* @return \Illuminate\Http\Response
+*/
+public function store(Request $request){
+  //
+}
+
+/**
+* Display the specified resource.
+*
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+public function show(Request $request, $id){
+  // $sql = "SELECT * FROM candidates WHERE candidateId = ".$id;
+  // $data=DB::select($sql);
+  $sql="SELECT * FROM status";
+  $status=DB::select($sql);
+
+  $data=DB::table('candidates')->where('candidateId', $id)->first();
+
+  return view('createCandidate',['data'=>$data,'status' => $status]);
+}
+
+/**
+* Show the form for editing the specified resource.
+*
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+public function edit($id)
+{
+  //
+}
+
+/**
+* Update the specified resource in storage.
+*
+* @param  \Illuminate\Http\Request  $request
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+public function update(){
+  if( isset($_GET["del"]) && $_GET["del"] == "Delete"){
+    DB::table('candidates')->where('candidateId','=',$_GET["id"])->delete();
+    $sql = 'SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId';
+    $candidates = DB::select($sql);
+    return view('candidates',['candidates' => $candidates, 'text'=>"Data deleted"]);
+  }else{
+    DB::table('candidates')
+    ->where('candidateId',$_GET["id"])
+    ->update(
+      ['name' =>$_GET["name"],
+      'surname' =>$_GET["surname"],
+      'dateOfBirth' =>$_GET["dob"],
+      'gender'=> $_GET["gender"],
+      'tel'=>$_GET["tel"],
+      'statusId'=>$_GET["statusId"],
+      'remark'=>$_GET["remark"]]
+    );
+    $recent = DB::select("SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId WHERE candidateId = ".$_GET["id"]);
+    return view('candidates', ['candidates' => $recent, 'text'=>"Editted Successful"]);
   }
 
-  /**
-  * Display the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function show($id)
-  {
-    //
-  }
+}
 
-  /**
-  * Show the form for editing the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function edit($id)
-  {
-    //
-  }
-
-  /**
-  * Update the specified resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function update(Request $request, $id)
-  {
-    //
-  }
-
-  /**
-  * Remove the specified resource from storage.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function destroy($id)
-  {
-    //
-  }
+/**
+* Remove the specified resource from storage.
+*
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+public function destroy($id)
+{
+  //
+}
 }
