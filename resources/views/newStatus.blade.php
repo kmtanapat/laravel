@@ -50,26 +50,21 @@
   </nav>
 
   <div class="container">
-    <h1>All Status</h1>
-    <p>
-    <a class="btn btn-success" href="/newStatus">New Status</a>
-  </p>
-      <table class="table table-hover table-bordered">
-        <thead class="thead-light">
-        <tr>
-          <td>Name</td>
-          <td>Current Candidates</td>
-          <td>Description</td>
-        </tr>
-        </thead>
-      @foreach ($status as $s)
-      <tr>
-        <td>{{ $s->statusName }}</td>
-        <td>{{ $s->amount }} people</td>
-        <td>{{ $s->description }}</td>
-      </tr>
-      @endforeach
-    </table>
+    <h1>New Status</h1>
+    <form action="createStatus">
+      <p>
+        Status Name:
+        <input type="text" name="name" required class="form-control">
+      </p>
+      <p>
+        Description:
+        <textarea name="description" class="form-control"></textarea>
+      </p>
+      <div style="text-align:center">
+        <input type="submit" class="btn btn-success">
+      </div>
+    </form>
+
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
