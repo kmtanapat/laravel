@@ -100,9 +100,28 @@ public function edit($id)
 * @param  int  $id
 * @return \Illuminate\Http\Response
 */
-public function update(Request $request, $id)
-{
-  //
+public function update(){
+  if( isset($_GET["del"]) && $_GET["del"] == "Delete"){
+    DB::table('candidates')->where('candidateId','=',$_GET["id"])->delete();
+    $sql = 'SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId';
+    $candidates = DB::select($sql);
+    return view('candidates',['candidates' => $candidates, 'text'=>"Data deleted"]);
+  }else{
+    DB::table('candidates')
+    ->where('candidateId',$_GET["id"])
+    ->update(
+      ['name' =>$_GET["name"],
+      'surname' =>$_GET["surname"],
+      'dateOfBirth' =>$_GET["dob"],
+      'gender'=> $_GET["gender"],
+      'tel'=>$_GET["tel"],
+      'statusId'=>$_GET["statusId"],
+      'remark'=>$_GET["remark"]]
+    );
+    $recent = DB::select("SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId WHERE candidateId = ".$_GET["id"]);
+    return view('candidates', ['candidates' => $recent, 'text'=>"Editted Successful"]);
+  }
+
 }
 
 /**

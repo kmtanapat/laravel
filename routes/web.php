@@ -23,3 +23,4 @@ Route::get('/addCandidate', 'CandidateController@create');
 Route::get('/save', 'CandidateController@save');
 Route::get('/sort/{sortby}/{order}','CandidateController@sort');
 Route::get('/show/{id}', 'CandidateController@show');
+Route::get('/update', 'CandidateController@update');

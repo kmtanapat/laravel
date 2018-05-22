@@ -61,7 +61,7 @@
 
     <form class="form-inline form-group mb-2" action="search">
       Search:&nbsp;
-      <input type="text" name="search" class="form-control">&nbsp;
+      <input type="text" name="search" class="form-control" placeholder="name, surname or remark">&nbsp;
       <input type="submit" value="search" class="btn btn-success">
     </form>
 

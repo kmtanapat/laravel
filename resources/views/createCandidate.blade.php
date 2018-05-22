@@ -48,7 +48,8 @@
     if(isset($data)){
       ?>
       <h1>{{$data->name}} {{$data->surname}}'s Info</h1>
-      <form action="update">
+      <form action="/update">
+        <input type="hidden" name="id" value="{{$data->candidateId}}">
         <div class="row">
           <div class="col-sm">
             <div class="form-group">
@@ -112,7 +113,7 @@
                 @else
                 <option value="{{ $s->statusId }}">{{ $s->statusName }}</option>
                 @endif
-                @endforeach                
+                @endforeach
               </select>
             </div>
           </div>
@@ -123,6 +124,7 @@
           <textarea name="remark" class="form-control">{{$data->remark}}</textarea>
         </div>
         <div style="text-align:center">
+          <input type="submit" name="del" value="Delete" class="btn btn-danger">
           <input type="submit" class="btn btn-success" value="Update">
         </div>
       </form>
