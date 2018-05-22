@@ -67,6 +67,7 @@
           <td>Description</td>
         </tr>
       </thead>
+      
       @foreach ($status as $s)
       <tr>
         <td>{{ $s->statusName }}</td>

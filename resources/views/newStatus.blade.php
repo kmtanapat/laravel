@@ -51,7 +51,7 @@
 
   <div class="container">
     <h1>New Status</h1>
-    <form action="createStatus">
+    <form action="/createStatus">
       <p>
         Status Name:
         <input type="text" name="name" required class="form-control">
