@@ -12,6 +12,25 @@
 <body>
   @include('navbar')
 
+  @if(isset($status))
+  <div class="container">
+    <h1>New Status</h1>
+    <form action="/updateStatus/{{$status->statusId}}">
+      <p>
+        Status Name:
+        <input type="text" name="name" required class="form-control" value="{{$status->statusName}}">
+      </p>
+      <p>
+        Description:
+        <textarea name="description" class="form-control">  {{$status->description}}</textarea>
+      </p>
+      <div style="text-align:center">
+        <input type="submit" class="btn btn-success">
+      </div>
+    </form>
+
+  </div>
+  @else
   <div class="container">
     <h1>New Status</h1>
     <form action="/createStatus">
@@ -27,8 +46,8 @@
         <input type="submit" class="btn btn-success">
       </div>
     </form>
-
   </div>
+  @endif
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>

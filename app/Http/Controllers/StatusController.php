@@ -25,8 +25,21 @@ class StatusController extends Controller
     return view('status', ['status' => $status, 'text'=>"Create Successful"]);
   }
 
-  public function edit(){
-    return view('newStatus');
+  public function edit(Request $request, $id){
+    $data = DB::table('status')->where('statusId','=',$id)->first();
+    return view('newStatus', ['status'=>$data]);
+  }
+
+  public function update(Request $request, $id){
+    DB::table('status')
+    ->where('statusId',$id)
+    ->update(
+      ['statusName' =>$_GET["name"],
+      'description' =>$_GET["description"]]
+    );
+    $sql = "SELECT s.statusId, s.statusName, count(c.statusId) as 'amount', s.description from status s left join candidates c on c.statusId = s.statusId group by s.statusId";
+    $status = DB::select($sql);
+    return view('status', ['status' => $status, 'text'=>"Update Completed!"]);
   }
 
   public function delete(Request $request, $id){

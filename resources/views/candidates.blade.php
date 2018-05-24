@@ -11,9 +11,6 @@
 </head>
 <body>
   @include('navbar')
-
-  
-
   <div class="container">
     <h1>All Candidates</h1>
 
