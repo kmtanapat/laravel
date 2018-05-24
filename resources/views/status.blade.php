@@ -51,8 +51,8 @@
 
   <div class="container">
     @if(isset($text))
-    <div class="alert alert-success" role="alert">
-      Add successful
+    <div class="alert alert-primary" role="alert">
+      {{$text}}
     </div>
     @endif
     <h1>All Status</h1>
@@ -65,9 +65,10 @@
           <td>Name</td>
           <td>Current Candidates</td>
           <td>Description</td>
+          <td></td>
         </tr>
       </thead>
-      
+
       @foreach ($status as $s)
       <tr>
         <td>{{ $s->statusName }}</td>
@@ -77,6 +78,10 @@
         <td>{{ $s->amount }} people</td>
         @endif
         <td>{{ $s->description }}</td>
+        <td style="text-align:center">
+          <a class="btn btn-danger" href="delete/{{ $s->statusId }}">Delete</a>
+          <a class="btn btn-info" href="edit/{{ $s->statusId }}">Edit</a>
+        </td>
       </tr>
       @endforeach
     </table>

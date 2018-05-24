@@ -27,3 +27,5 @@ Route::get('/update', 'CandidateController@update');
 Route::get('/status', 'StatusController@index');
 Route::get('/newStatus', 'StatusController@new');
 Route::get('/createStatus', 'StatusController@create');
+Route::get('/edit/{id}', 'StatusController@edit');
+Route::get('/delete/{id}', 'StatusController@delete');
