@@ -75,8 +75,6 @@ public function store(Request $request){
 * @return \Illuminate\Http\Response
 */
 public function show(Request $request, $id){
-  // $sql = "SELECT * FROM candidates WHERE candidateId = ".$id;
-  // $data=DB::select($sql);
   $sql="SELECT * FROM status";
   $status=DB::select($sql);
 
@@ -121,7 +119,7 @@ public function update(){
       'statusId'=>$_GET["statusId"],
       'remark'=>$_GET["remark"]]
     );
-    $recent = DB::select("SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId WHERE candidateId = ".$_GET["id"]);
+    $recent = DB::select("SELECT c.*, s.statusName as statusN, p.positionName as position FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN positions p ON p.candidateId = c.candidateId WHERE c.candidateId = ".$_GET["id"]);
     return view('candidates', ['candidates' => $recent, 'text'=>"Editted Successful"]);
   }
 
