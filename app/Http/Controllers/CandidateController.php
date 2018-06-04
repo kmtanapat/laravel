@@ -12,14 +12,17 @@ class CandidateController extends Controller{
   * @return \Illuminate\Http\Response
   */
   public function index(){
-    $sql = 'SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId';
+    $sql = 'SELECT c.*, s.statusName as statusN, p.positionName as position '.
+    'FROM candidates c '.
+    'JOIN status s ON s.statusId = c.statusId '.
+    'LEFT JOIN positions p ON p.candidateId = c.candidateId';
     $candidates = DB::select($sql);
     return view('candidates',['candidates' => $candidates]);
   }
 
   public function search(){
     $search =$_GET["search"];
-    $sql = "SELECT c.*, s.statusName as statusN  FROM candidates c JOIN status s ON s.statusId = c.statusId WHERE name LIKE '%".$search."%' OR surname LIKE '%".$search."%' OR remark LIKE '%".$search."%'";
+    $sql = "SELECT c.*, s.statusName as statusN, p.positionName as position FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN positions p ON p.candidateId = c.candidateId WHERE name LIKE '%".$search."%' OR surname LIKE '%".$search."%' OR remark LIKE '%".$search."%'";
     $candidates = DB::select($sql);
     return view('candidates',['candidates' => $candidates]);
 
@@ -47,7 +50,7 @@ class CandidateController extends Controller{
   }
 
   public function sort(Request $request, $sortby, $order){
-    $sql = 'SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId ORDER BY '.$sortby.' '.$order;
+    $sql = 'SELECT c.*, s.statusName as statusN, p.positionName as position FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN positions p ON p.candidateId = c.candidateId ORDER BY '.$sortby.' '.$order;
     $candidates = DB::select($sql);
     return view('candidates',
     ['candidates' => $candidates,

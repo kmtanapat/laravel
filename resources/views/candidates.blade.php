@@ -42,6 +42,7 @@
             <th scope="col">Tel</th>
             <th scope="col">Birthday</th>
             <th scope="col"><a href="/sort/statusId/DESC">Status</a></th>
+            <th scope="col">Position</th>
             <th scope="col">Remark</th>
             <?php
           }else{
@@ -52,6 +53,7 @@
             <th scope="col">Tel</th>
             <th scope="col">Birthday</th>
             <th scope="col"><a href="/sort/statusId/ASC">Status</a></th>
+            <th scope="col">Position</th>
             <th scope="col">Remark</th>
             <?php
           }
@@ -67,6 +69,7 @@
         <td>{{ $candi->tel }}</td>
         <td>{{ $candi->dateOfBirth }} <br> ({{date("Y")-$year}} years old) </td>
         <td>{{ $candi->statusN }}</td>
+        <td>{{ $candi->position }}</td>
         <td>{{ $candi->remark }}</td>
       </tr>
       @endforeach
