@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 18, 2018 at 08:31 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Host: 127.0.0.1
+-- Generation Time: Jun 04, 2018 at 06:43 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `candidateSystem`
+-- Database: `candidatesystem`
 --
 
 -- --------------------------------------------------------
@@ -57,27 +57,27 @@ CREATE TABLE `candidates` (
 --
 
 INSERT INTO `candidates` (`candidateId`, `name`, `surname`, `dateOfBirth`, `gender`, `tel`, `statusId`, `remark`) VALUES
-(1, 'John', 'Cena', '1988-05-02', 'M', '083-3333333', 0, 'Accepted. Good potential to be a programmer.'),
-(2, 'Jack', 'Sparrow', '1872-05-14', 'M', '0992221144', 0, 'Wait for second interview.'),
-(3, 'Marie', 'Curie', '1988-06-11', 'F', '098-9999999', 0, 'Chemistry master'),
-(4, 'Ash', 'Ketchum', '2010-04-10', 'M', '0899999999', 0, 'Pokemon master'),
-(5, 'Cherprang', 'Areekul', '1996-05-28', 'F', '09988888767', 0, NULL),
-(6, 'Minerva', 'McGonagal', '1966-05-13', 'F', '0992222222', 0, NULL),
-(7, 'Bella', 'Goth', '1989-05-08', 'F', '0997775555', 0, NULL),
-(8, 'Albus', 'Percival Vulfric Bryan Dumbledore', '1919-05-07', 'M', '0888888888', 0, NULL),
-(9, 'Septimus ', 'Heap', '1999-05-14', 'F', '098888', 0, NULL),
-(10, 'Alan', 'Rickman', '1978-01-08', 'M', '0988888888', 0, NULL),
-(11, 'Norimaki', 'Arale', '2017-06-18', 'F', '0987776666', 0, NULL),
-(12, 'Lily', 'Evans', '1977-08-17', 'F', '0988888888', 0, NULL),
-(13, 'James', 'Potter', '1976-05-30', 'M', '0999999999', 0, NULL),
-(14, 'Prayuth', 'Chanocha', '1965-10-23', 'M', '0922122221', 0, NULL),
-(15, 'Prawit', 'Wongsuwan', '1967-11-10', 'M', '0933333333', 0, 'Have too much watch'),
-(16, 'Jack ', 'Ma', '1992-02-06', 'M', '0998886666', 0, 'Pu\'s big bro'),
-(17, 'Donald', 'Trump', '1917-01-28', 'M', '0988888888', 0, NULL),
-(18, 'Jong Un', 'Kim', '1966-03-25', 'M', '0922222111', 0, 'NUKE!'),
-(19, 'Traxex', 'Drow Ranger', '1982-01-22', 'F', '0999999999', 0, 'Dota2 u know?'),
-(20, 'Lady', 'Gaga', '1956-08-23', 'F', '0888888888', 0, NULL),
-(21, 'Sashihara', 'Rino', '1998-03-07', 'F', '0999999999', 0, NULL);
+(1, 'John', 'Cena', '1988-05-02', 'M', '083-3333333', 1, 'Accepted. Good potential to be a programmer.'),
+(2, 'Jack', 'Sparrow', '1872-05-14', 'M', '0992221144', 1, 'Wait for second interview.'),
+(3, 'Marie', 'Curie', '1988-06-11', 'F', '098-9999999', 2, 'Chemistry master'),
+(4, 'Ash', 'Ketchum', '2010-04-10', 'M', '0899999999', 1, 'Pokemon master'),
+(5, 'Cherprang', 'Areekul', '1996-05-28', 'F', '09988888767', 1, NULL),
+(6, 'Minerva', 'McGonagal', '1966-05-13', 'F', '0992222222', 1, NULL),
+(7, 'Bella', 'Goth', '1989-05-08', 'F', '0997775555', 2, NULL),
+(8, 'Albus', 'Percival Vulfric Bryan Dumbledore', '1919-05-07', 'M', '0888888888', 1, NULL),
+(9, 'Septimus ', 'Heap', '1999-05-14', 'F', '098888', 1, NULL),
+(10, 'Alan', 'Rickman', '1978-01-08', 'M', '0988888888', 2, NULL),
+(11, 'Norimaki', 'Arale', '2017-06-18', 'F', '0987776666', 2, NULL),
+(12, 'Lily', 'Evans', '1977-08-17', 'F', '0988888888', 2, NULL),
+(13, 'James', 'Potter', '1976-05-30', 'M', '0999999999', 2, NULL),
+(14, 'Prayuth', 'Chanocha', '1965-10-23', 'M', '0922122221', 1, NULL),
+(15, 'Prawit', 'Wongsuwan', '1967-11-10', 'M', '0933333333', 2, 'Have too much watch'),
+(16, 'Jack ', 'Ma', '1992-02-06', 'M', '0998886666', 1, 'Pu\'s big bro'),
+(17, 'Donald', 'Trump', '1917-01-28', 'M', '0988888888', 2, NULL),
+(18, 'Jong Un', 'Kim', '1966-03-25', 'M', '0922222111', 1, 'NUKE!'),
+(19, 'Traxex', 'Drow Ranger', '1982-01-22', 'F', '0999999999', 2, 'Dota2 u know?'),
+(20, 'Lady', 'Gaga', '1956-08-23', 'F', '0888888888', 1, NULL),
+(21, 'Sashihara', 'Rino', '1998-03-07', 'F', '0999999999', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -92,6 +92,20 @@ CREATE TABLE `positions` (
   `expectedSalary` int(11) NOT NULL,
   `positionName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `positions`
+--
+
+INSERT INTO `positions` (`positionId`, `candidateId`, `currentSalary`, `expectedSalary`, `positionName`) VALUES
+(1, 1, 500, 1000, 'Programmer'),
+(2, 2, 20000, 30000, 'Programmer'),
+(3, 7, 6000, 6200, 'Singer'),
+(4, 11, 150000, 100, 'Project Manager'),
+(5, 12, 6300, 7800, 'Banana Eater'),
+(6, 15, 450000000, 900000000, 'Watch Collector'),
+(7, 17, 120, 18000, 'CEO'),
+(8, 20, 6900, 3600, 'Singer');
 
 -- --------------------------------------------------------
 
@@ -198,7 +212,7 @@ ALTER TABLE `candidates`
 -- AUTO_INCREMENT for table `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `positionId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `positionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `scores`
