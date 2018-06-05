@@ -194,6 +194,37 @@
           Remark:
           <textarea name="remark" class="form-control"></textarea>
         </div>
+
+        <div class="row">
+          <div class="col-sm">
+            <b>Salary:</b>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Position:</label>
+              <input type="text" id="" name="posName" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Current Salary:</label>
+              <input type="number" name="curSalary" class="form-control" >
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Expected Salary:</label>
+              <input type="number" name="exSalary" class="form-control">
+            </div>
+          </div>
+        </div>
+
         <div style="text-align:center">
           <input type="submit" class="btn btn-success" value="Save">
         </div>
