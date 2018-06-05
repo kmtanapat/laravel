@@ -108,6 +108,26 @@ public function update(){
     $candidates = DB::select($sql);
     return view('candidates',['candidates' => $candidates, 'text'=>"Data deleted"]);
   }else{
+    $position = DB::table('positions')->where('candidateId',$_GET["id"])->exists();
+    //var_dump($position);
+    if(!$position){
+      DB::table('positions')
+      ->insert(
+        [ 'candidateId'=>$_GET["id"],
+        'currentSalary'=>$_GET["curSalary"],
+        'expectedSalary'=>$_GET["exSalary"],
+        'positionName'=>$_GET["posName"]]
+      );
+    }else{
+      DB::table('positions')
+      ->where('candidateId',$_GET["id"])
+      ->update(
+        [ 'candidateId'=>$_GET["id"],
+        'currentSalary'=>$_GET["curSalary"],
+        'expectedSalary'=>$_GET["exSalary"],
+        'positionName'=>$_GET["posName"]]
+      );
+    }
     DB::table('candidates')
     ->where('candidateId',$_GET["id"])
     ->update(

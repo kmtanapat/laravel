@@ -92,6 +92,39 @@
           Remark:
           <textarea name="remark" class="form-control">{{$data->remark}}</textarea>
         </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col-sm">
+            <b>Salary:</b>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Position:</label>
+              <input type="text" id="" name="posName" value="" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Expected:</label>
+              <input type="number" name="exSalary" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-group">
+              <label>  Current:</label>
+              <input type="number" name="curSalary" class="form-control">
+            </div>
+          </div>
+        </div>
+
         <div style="text-align:center">
           <input type="submit" name="del" value="Delete" class="btn btn-danger">
           <input type="submit" class="btn btn-success" value="Update">
