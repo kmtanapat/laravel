@@ -45,7 +45,17 @@ class CandidateController extends Controller{
     " VALUES ( NULL, :name, :surname, :dateOfBirth, :gender, :tel, :statusId, :remark)",
     [$_GET["name"], $_GET["surname"], $_GET["dob"], $_GET["gender"], $_GET["tel"], $_GET["statusId"], $_GET["remark"]]);
 
-    $recent = DB::select("SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId ORDER BY candidateId DESC LIMIT 1");
+    $id = DB::select("SELECT MAX(candidateId) AS candidateId FROM candidates");
+    foreach ($id as $i) {
+      $cid = $i->candidateId;
+    }
+    DB::table("positions")->insert([
+      "candidateId"=>$cid,
+      "positionName"=>$_GET["posName"],
+      "currentSalary"=>$_GET["curSalary"],
+      "expectedSalary"=>$_GET["exSalary"]
+    ]);
+    $recent = DB::select("SELECT c.*, s.statusName as statusN, p.positionName as position FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN positions p ON p.candidateId = c.candidateId ORDER BY candidateId DESC LIMIT 1");
     return view('candidates', ['candidates' => $recent, 'text'=>"Candidate added."]);
   }
 
