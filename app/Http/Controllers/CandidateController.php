@@ -77,10 +77,10 @@ public function store(Request $request){
 public function show(Request $request, $id){
   $sql="SELECT * FROM status";
   $status=DB::select($sql);
-
+  $position = DB::table('positions')->where('candidateId', $id)->first();
   $data=DB::table('candidates')->where('candidateId', $id)->first();
 
-  return view('createCandidate',['data'=>$data,'status' => $status]);
+  return view('createCandidate',['data'=>$data,'status' => $status, 'position'=>$position]);
 }
 
 /**

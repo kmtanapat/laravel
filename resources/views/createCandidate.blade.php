@@ -105,7 +105,7 @@
           <div class="col-sm">
             <div class="form-group">
               <label>Position:</label>
-              <input type="text" id="" name="posName" value="" class="form-control">
+              <input type="text" id="" name="posName" value="{{$position->positionName}}" class="form-control">
             </div>
           </div>
         </div>
@@ -113,14 +113,14 @@
         <div class="row">
           <div class="col-sm">
             <div class="form-group">
-              <label>Expected:</label>
-              <input type="number" name="exSalary" class="form-control">
+              <label>Current Salary:</label>
+              <input type="number" name="curSalary" class="form-control" value="{{$position->currentSalary}}">
             </div>
           </div>
           <div class="col-sm">
             <div class="form-group">
-              <label>  Current:</label>
-              <input type="number" name="curSalary" class="form-control">
+              <label>Expected Salary:</label>
+              <input type="number" name="exSalary" class="form-control" value="{{$position->expectedSalary}}">
             </div>
           </div>
         </div>
