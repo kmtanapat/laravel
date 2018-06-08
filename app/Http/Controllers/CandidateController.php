@@ -45,6 +45,10 @@ class CandidateController extends Controller{
     " VALUES ( NULL, :name, :surname, :dateOfBirth, :gender, :tel, :statusId, :remark)",
     [$_GET["name"], $_GET["surname"], $_GET["dob"], $_GET["gender"], $_GET["tel"], $_GET["statusId"], $_GET["remark"]]);
 
+    foreach ($_GET["testname"] as $tn) {
+    //  DB::table('tests')
+    }
+
     $id = DB::select("SELECT MAX(candidateId) AS candidateId FROM candidates");
     foreach ($id as $i) {
       $cid = $i->candidateId;

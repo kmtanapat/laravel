@@ -135,7 +135,7 @@
     }else{
       ?>
       <h1>Add Candidate Data</h1>
-      <form action="save">
+      <form action="/save">
         <div class="row">
           <div class="col-sm">
             <div class="form-group">
@@ -234,7 +234,7 @@
           <div class="col-sm">
             <div class="form-group">
               <label>Test Name:</label>
-              <select class="form-control" name="testname" >
+              <select class="form-control" name="testname[]" >
                 <option>--</option>
                 @foreach($test as $t)
                   <option value="{{$t->testId}}">{{$t->testName}}</option>
@@ -278,7 +278,7 @@
         '<div class="col-sm">'+
           '<div class="form-group">'+
             '<label>Test Name:</label>'+
-            '<select class="form-control" name="testname" >'+
+            '<select class="form-control" name="testname[]" >'+
             '<option>--</option>'+
             @foreach($test as $t)
               '<option value="{{$t->testId}}">{{$t->testName}}</option>'+

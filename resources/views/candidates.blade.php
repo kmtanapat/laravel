@@ -29,6 +29,10 @@
       <input type="text" name="search" class="form-control" placeholder="name, surname or remark">&nbsp;
       <input type="submit" value="search" class="btn btn-success">
     </form>
+    <br>
+    <div>
+      <a class="btn btn-success" href="/addCandidate">New candidates</a>
+    </div><br>
 
     <table class="table table-hover table-bordered" style="width:100%">
       <thead class="thead-light">

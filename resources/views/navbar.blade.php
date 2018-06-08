@@ -10,10 +10,10 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/addCandidate">Add Candidates</a>
+        <a class="nav-link" href="/addCandidate">Candidates</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/status">Add Status</a>
+        <a class="nav-link" href="/status">Status</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/test">Test</a>
