@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 08, 2018 at 08:49 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Host: 127.0.0.1
+-- Generation Time: Jun 08, 2018 at 06:43 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `candidateSystem`
+-- Database: `candidatesystem`
 --
 
 -- --------------------------------------------------------
@@ -30,10 +30,40 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appointments` (
   `appointmentId` int(11) NOT NULL,
+  `apppointmentsTypeId` int(11) NOT NULL,
   `candidateId` int(11) NOT NULL,
   `date` date NOT NULL,
   `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`appointmentId`, `apppointmentsTypeId`, `candidateId`, `date`, `description`) VALUES
+(1, 1, 2, '2018-06-11', NULL),
+(2, 3, 2, '2018-06-19', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `apppointmentstype`
+--
+
+CREATE TABLE `apppointmentstype` (
+  `apppointmentsTypeId` int(11) NOT NULL,
+  `appointmentName` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `apppointmentstype`
+--
+
+INSERT INTO `apppointmentstype` (`apppointmentsTypeId`, `appointmentName`) VALUES
+(1, 'Phone'),
+(2, 'Interview'),
+(3, 'Skype'),
+(4, 'Hangout');
 
 -- --------------------------------------------------------
 
@@ -184,6 +214,12 @@ ALTER TABLE `appointments`
   ADD PRIMARY KEY (`appointmentId`);
 
 --
+-- Indexes for table `apppointmentstype`
+--
+ALTER TABLE `apppointmentstype`
+  ADD PRIMARY KEY (`apppointmentsTypeId`);
+
+--
 -- Indexes for table `candidates`
 --
 ALTER TABLE `candidates`
@@ -221,7 +257,13 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `apppointmentstype`
+--
+ALTER TABLE `apppointmentstype`
+  MODIFY `apppointmentsTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `candidates`
