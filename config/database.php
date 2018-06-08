@@ -48,7 +48,7 @@ return [
       ],
       'sticky'    => true,
       'driver'    => 'mysql',
-      'database'  => 'candidateSystem',
+      'database'  => 'Mycandy2',
       'username'  => 'root',
       'password'  => '',
       'charset' => 'utf8',

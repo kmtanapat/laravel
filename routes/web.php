@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/user', 'Auth\UserController@index');
-
+Auth::routes();
+$this->get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name('activate.user');
 Route::get('/', 'CandidateController@index');
 Route::get('/search','CandidateController@search');
 Route::get('/addCandidate', 'CandidateController@create');
