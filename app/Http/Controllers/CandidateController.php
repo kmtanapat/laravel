@@ -44,9 +44,18 @@ class CandidateController extends Controller{
     DB::insert("INSERT INTO `candidates` (`candidateId`, `name`, `surname`, `dateOfBirth`, `gender`, `tel`, `statusId`, `remark`)".
     " VALUES ( NULL, :name, :surname, :dateOfBirth, :gender, :tel, :statusId, :remark)",
     [$_GET["name"], $_GET["surname"], $_GET["dob"], $_GET["gender"], $_GET["tel"], $_GET["statusId"], $_GET["remark"]]);
+    $i=0;
+    $id = DB::table('candidates')->orderby('candidateId','desc')->first();
 
-    foreach ($_GET["testname"] as $tn) {
-    //  DB::table('tests')
+    $testname = $_GET["testname"];
+    $score = $_GET["score"];
+    foreach (array_combine($testname, $score) as $testname=>$score) {
+      DB::table('scores')->insert([
+        'candidateId'=>$id->candidateId,
+        'testId' =>$testname,
+        'score'=>$score
+      ]);
+      $i++;
     }
 
     $id = DB::select("SELECT MAX(candidateId) AS candidateId FROM candidates");

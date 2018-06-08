@@ -225,6 +225,7 @@
             </div>
           </div>
         </div>
+        <br>
         <div class="row">
           <div class="col-sm">
             <b>Test:</b>
@@ -245,7 +246,7 @@
           <div class="col-sm">
             <div class="form-group">
               <label>Score:</label>
-              <input type="number" name="score" class="form-control">
+              <input type="number" name="score[]" class="form-control">
             </div>
           </div>
         </div>
@@ -289,7 +290,7 @@
         '<div class="col-sm">'+
           '<div class="form-group">'+
             '<label>Score:</label>'+
-            '<input type="number" name="score" class="form-control">'+
+            '<input type="number" name="score[]" class="form-control">'+
           '</div>'+
         '</div>'+
       '</div>';
