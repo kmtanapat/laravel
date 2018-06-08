@@ -124,33 +124,7 @@
             </div>
           </div>
         </div>
-        <br>
-        <div class="row">
-          <div class="col-sm">
-            <b>Test:</b>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <div class="form-group">
-              <label>Test Name:</label>
-              <select class="form-control" name="testname" >
-                <option>...</option>
-                <option>...</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="form-group">
-              <label>Score:</label>
-              <input type="number" name="score" class="form-control">
-            </div>
-          </div>
-        </div>
-        <div id="moreScore">
-        </div>
-        <button type="button" id="add" class="btn btn-outline-success">+</button>
-        <button type="button" id="del" class="btn btn-outline-danger" >-</button>
+
 
         <div style="text-align:center">
           <input type="submit" name="del" value="Delete" class="btn btn-danger">
@@ -251,6 +225,34 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-sm">
+            <b>Test:</b>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Test Name:</label>
+              <select class="form-control" name="testname" >
+                <option>--</option>
+                @foreach($test as $t)
+                  <option value="{{$t->testId}}">{{$t->testName}}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Score:</label>
+              <input type="number" name="score" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div id="moreScore">
+        </div>
+        <button type="button" id="add" class="btn btn-outline-success">+</button>
+        <button type="button" id="del" class="btn btn-outline-danger" >-</button>
 
         <div style="text-align:center">
           <input type="submit" class="btn btn-success" value="Save">
@@ -277,8 +279,10 @@
           '<div class="form-group">'+
             '<label>Test Name:</label>'+
             '<select class="form-control" name="testname" >'+
-              '<option>...</option>'+
-              '<option>...</option>'+
+            '<option>--</option>'+
+            @foreach($test as $t)
+              '<option value="{{$t->testId}}">{{$t->testName}}</option>'+
+            @endforeach
             '</select>'+
           '</div>'+
         '</div>'+

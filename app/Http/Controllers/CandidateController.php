@@ -35,9 +35,9 @@ class CandidateController extends Controller{
   * @return \Illuminate\Http\Response
   */
   public function create(){
-    $sql="SELECT * FROM status";
-    $status=DB::select($sql);
-    return view('createCandidate', ['status' => $status]);
+    $status=DB::table('status')->get();
+    $test = DB::table('tests')->get();
+    return view('createCandidate', ['status' => $status, 'test'=>$test]);
   }
 
   public function save(){
