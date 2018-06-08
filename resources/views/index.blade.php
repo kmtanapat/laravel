@@ -23,8 +23,8 @@
   </div>
 </div>
 
-<div class="modal fade" id="appointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-lg" id="appointment" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add Appointment</h5>
@@ -33,8 +33,44 @@
         </button>
       </div>
       <div class="modal-body">
-        <div></div>
-      
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Select Candidate:</label>
+              <select class="form-control">
+                <option>--</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Type:</label>
+              <select class="form-control">
+                <option>--</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>From: </label>
+              <input type="datetime" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-group">
+              <label>To: </label>
+              <input type="datetime" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div align="center">
+          <input type="submit" class="btn btn-success">
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
