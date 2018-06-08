@@ -102,8 +102,15 @@ public function show(Request $request, $id){
   $status=DB::select($sql);
   $position = DB::table('positions')->where('candidateId', $id)->first();
   $data=DB::table('candidates')->where('candidateId', $id)->first();
-
-  return view('createCandidate',['data'=>$data,'status' => $status, 'position'=>$position]);
+  $test = DB::table('tests')->get();
+  $candiScore = DB::table('scores')->where('candidateId', $id)->get();
+  return view('createCandidate',[
+    'data'=>$data,
+    'test'=>$test,
+    'status' => $status,
+    'position'=>$position,
+    'candiScore'=>$candiScore
+  ]);
 }
 
 /**

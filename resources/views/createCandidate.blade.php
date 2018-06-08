@@ -125,6 +125,42 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-sm">
+            <b>Test:</b>
+          </div>
+        </div>
+
+        @foreach($candiScore as $cs)
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Test Name:</label>
+              <select class="form-control" name="testname[]" >
+                <option>--</option>
+
+                @foreach($test as $t)
+                  @if ($cs->testId == $t->testId)
+                    <option value="{{$t->testId}}" selected>{{$t->testName}}</option>
+                  @else
+                    <option value="{{$t->testId}}">{{$t->testName}}</option>
+                  @endif                    
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Score:</label>
+              <input type="number" name="score[]" class="form-control" value="{{$cs->score}}">
+            </div>
+          </div>
+        </div>
+        @endforeach
+        <div id="moreScore">
+        </div>
+        <button type="button" id="add" class="btn btn-outline-success">+</button>
+        <button type="button" id="del" class="btn btn-outline-danger" >-</button>
 
         <div style="text-align:center">
           <input type="submit" name="del" value="Delete" class="btn btn-danger">
