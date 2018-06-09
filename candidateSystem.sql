@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2018 at 06:43 PM
+-- Generation Time: Jun 09, 2018 at 07:52 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -30,9 +30,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appointments` (
   `appointmentId` int(11) NOT NULL,
-  `apppointmentsTypeId` int(11) NOT NULL,
+  `appointmentsTypeId` int(11) NOT NULL,
   `candidateId` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `dateStart` datetime NOT NULL,
+  `dateEnd` datetime NOT NULL,
   `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,30 +41,33 @@ CREATE TABLE `appointments` (
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`appointmentId`, `apppointmentsTypeId`, `candidateId`, `date`, `description`) VALUES
-(1, 1, 2, '2018-06-11', NULL),
-(2, 3, 2, '2018-06-19', NULL);
+INSERT INTO `appointments` (`appointmentId`, `appointmentsTypeId`, `candidateId`, `dateStart`, `dateEnd`, `description`) VALUES
+(1, 1, 2, '2018-06-11 06:00:00', '2018-06-11 16:00:00', NULL),
+(2, 3, 2, '2018-06-28 15:00:00', '2018-06-28 20:00:00', NULL),
+(3, 1, 24, '2018-06-24 17:00:00', '2018-06-24 20:00:00', NULL),
+(4, 2, 16, '2018-06-25 19:00:00', '2018-06-25 20:00:00', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `apppointmentstype`
+-- Table structure for table `appointmentstype`
 --
 
-CREATE TABLE `apppointmentstype` (
-  `apppointmentsTypeId` int(11) NOT NULL,
-  `appointmentName` varchar(100) NOT NULL
+CREATE TABLE `appointmentstype` (
+  `appointmentsTypeId` int(11) NOT NULL,
+  `appointmentName` varchar(100) NOT NULL,
+  `appointmentColor` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `apppointmentstype`
+-- Dumping data for table `appointmentstype`
 --
 
-INSERT INTO `apppointmentstype` (`apppointmentsTypeId`, `appointmentName`) VALUES
-(1, 'Phone'),
-(2, 'Interview'),
-(3, 'Skype'),
-(4, 'Hangout');
+INSERT INTO `appointmentstype` (`appointmentsTypeId`, `appointmentName`, `appointmentColor`) VALUES
+(1, 'Phone', '#4286f4'),
+(2, 'Interview', '#cab0e8'),
+(3, 'Skype', '#b4f7c7'),
+(4, 'Hangout', '#f7f3b4');
 
 -- --------------------------------------------------------
 
@@ -214,10 +218,10 @@ ALTER TABLE `appointments`
   ADD PRIMARY KEY (`appointmentId`);
 
 --
--- Indexes for table `apppointmentstype`
+-- Indexes for table `appointmentstype`
 --
-ALTER TABLE `apppointmentstype`
-  ADD PRIMARY KEY (`apppointmentsTypeId`);
+ALTER TABLE `appointmentstype`
+  ADD PRIMARY KEY (`appointmentsTypeId`);
 
 --
 -- Indexes for table `candidates`
@@ -257,13 +261,13 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `apppointmentstype`
+-- AUTO_INCREMENT for table `appointmentstype`
 --
-ALTER TABLE `apppointmentstype`
-  MODIFY `apppointmentsTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `appointmentstype`
+  MODIFY `appointmentsTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `candidates`
