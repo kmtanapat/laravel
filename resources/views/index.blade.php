@@ -11,74 +11,77 @@
 <body>
   @include('navbar')
 
-<div class="container">
-  <div class="row">
-    <div class="col-8">
-      <div id='calendar'></div>
-    </div>
-    <div class="col-4">
-      <h1>Details</h1>
-      <button class="btn btn-info" data-toggle="modal" data-target="#appointment">Add Appointment</button>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade bd-example-modal-lg" id="appointment" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Appointment</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div id='calendar'></div>
       </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-sm">
-            <div class="form-group">
-              <label>Select Candidate:</label>
-              <select class="form-control">
-                <option>--</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <div class="form-group">
-              <label>Type:</label>
-              <select class="form-control">
-                <option>--</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <div class="form-group">
-              <label>From: </label>
-              <input type="datetime" class="form-control">
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="form-group">
-              <label>To: </label>
-              <input type="datetime" class="form-control">
-            </div>
-          </div>
-        </div>
-        <div align="center">
-          <input type="submit" class="btn btn-success">
-        </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <div class="col-sm-4">
+        <h1>Details</h1>
+        @foreach($detail as $d)
+        <p><span class="badge" style="background-color:{{$d->appointmentColor}}">{{$d->appointmentName}}</span></p>
+        @endforeach
+        <button class="btn btn-info" data-toggle="modal" data-target="#appointment">Add Appointment</button>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="modal fade bd-example-modal-lg" id="appointment" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Appointment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label>Select Candidate:</label>
+                <select class="form-control">
+                  <option>--</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label>Type:</label>
+                <select class="form-control">
+                  <option>--</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label>From: </label>
+                <input type="datetime-local" class="form-control">
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-group">
+                <label>To: </label>
+                <input type="datetime-local" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div align="center">
+            <input type="submit" class="btn btn-success">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -92,8 +95,28 @@
   <script>
   $(function() {
     $('#calendar').fullCalendar({
-      // put your options and callbacks here
-    })
+      dayClick: function(date, jsEvent, view) {
+        if(view.name == 'month' || view.name == 'basicWeek') {
+          $('#calendar').fullCalendar('changeView', 'agendaDay');
+          $('#calendar').fullCalendar('gotoDate', date);
+        }
+      },
+      header: {
+        left: 'month,agendaWeek,agendaDay',
+        center: 'title',
+        right: 'prev,next today'
+      },
+      events:[
+        @foreach($appointment as $a)
+        {
+          title: '{{$a->name}} {{$a->surname}}',
+          start: '{{$a->dateStart}}',
+          end: '{{$a->dateEnd}}',
+          backgroundColor : '{{$a->appointmentColor}}'
+        },
+        @endforeach
+      ]
+    });
   });
   </script>
 
