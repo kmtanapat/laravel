@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/user', 'Auth\UserController@index');
+Route::get('/', 'Auth\LoginController@index');
 
-Route::get('/', 'CandidateController@index');
+Route::get('/index', 'MainController@index');
+Route::get('/candidate', 'CandidateController@index');
 Route::get('/search','CandidateController@search');
 Route::get('/addCandidate', 'CandidateController@create');
 Route::get('/save', 'CandidateController@save');

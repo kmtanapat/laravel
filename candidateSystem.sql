@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 08, 2018 at 08:49 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Host: 127.0.0.1
+-- Generation Time: Jun 09, 2018 at 07:52 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `candidateSystem`
+-- Database: `candidatesystem`
 --
 
 -- --------------------------------------------------------
@@ -30,10 +30,44 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appointments` (
   `appointmentId` int(11) NOT NULL,
+  `appointmentsTypeId` int(11) NOT NULL,
   `candidateId` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `dateStart` datetime NOT NULL,
+  `dateEnd` datetime NOT NULL,
   `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`appointmentId`, `appointmentsTypeId`, `candidateId`, `dateStart`, `dateEnd`, `description`) VALUES
+(1, 1, 2, '2018-06-11 06:00:00', '2018-06-11 16:00:00', NULL),
+(2, 3, 2, '2018-06-28 15:00:00', '2018-06-28 20:00:00', NULL),
+(3, 1, 24, '2018-06-24 17:00:00', '2018-06-24 20:00:00', NULL),
+(4, 2, 16, '2018-06-25 19:00:00', '2018-06-25 20:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointmentstype`
+--
+
+CREATE TABLE `appointmentstype` (
+  `appointmentsTypeId` int(11) NOT NULL,
+  `appointmentName` varchar(100) NOT NULL,
+  `appointmentColor` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `appointmentstype`
+--
+
+INSERT INTO `appointmentstype` (`appointmentsTypeId`, `appointmentName`, `appointmentColor`) VALUES
+(1, 'Phone', '#4286f4'),
+(2, 'Interview', '#cab0e8'),
+(3, 'Skype', '#b4f7c7'),
+(4, 'Hangout', '#f7f3b4');
 
 -- --------------------------------------------------------
 
@@ -184,6 +218,12 @@ ALTER TABLE `appointments`
   ADD PRIMARY KEY (`appointmentId`);
 
 --
+-- Indexes for table `appointmentstype`
+--
+ALTER TABLE `appointmentstype`
+  ADD PRIMARY KEY (`appointmentsTypeId`);
+
+--
 -- Indexes for table `candidates`
 --
 ALTER TABLE `candidates`
@@ -221,7 +261,13 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `appointmentstype`
+--
+ALTER TABLE `appointmentstype`
+  MODIFY `appointmentsTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `candidates`
