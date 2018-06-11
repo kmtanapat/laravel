@@ -31,10 +31,26 @@ class TestController extends Controller{
   }
 
   public function update(Request $request, $id){
-    $test = DB::table('tests')->where('testId', $id)->first();
-
-    return view('addTest', ['test'=>$test]);
+    if(isset($_GET["del"])){
+      DB::table('tests')
+      ->where('testId',$id)
+      ->delete();
+      $message="Delete successful";
+    }else{
+      DB::table('tests')
+      ->where('testId',$id)
+      ->update([
+        'testName' =>$_GET["testName"],
+        'description' =>$_GET["description"]
+      ]
+    );
+    $message="Successfully update";
   }
+
+  $tests = DB::table('tests')->get();
+
+  return view('test', ['tests' => $tests, 'message'=>$message]);
+}
 
 
 }
