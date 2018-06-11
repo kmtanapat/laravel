@@ -15,6 +15,10 @@
 
 <div class="container">
   <h1>All Tests</h1>
+  <div>
+    <a class="btn btn-success" href="/addTest">New Test</a>
+  </div>
+  <br>
     <table class="table table-hover table-bordered">
       <thead class="thead-light">
         <tr>
@@ -27,7 +31,9 @@
     @foreach($tests as $t)
       <tr>
         <td>{{$x++}}</td>
-        <td>{{$t->testName}}</td>
+        <td>
+          <a href="/showTest/{{$t->testId}}" >{{$t->testName}} </a>
+        </td>
         <td>{{$t->description}}</td>
       </tr>
     @endforeach

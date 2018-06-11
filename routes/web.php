@@ -15,6 +15,7 @@
 Route::get('/', 'Auth\LoginController@index');
 
 Route::get('/index', 'MainController@index');
+
 Route::get('/candidate', 'CandidateController@index');
 Route::get('/search','CandidateController@search');
 Route::get('/addCandidate', 'CandidateController@create');
@@ -31,3 +32,7 @@ Route::get('/delete/{id}', 'StatusController@delete');
 Route::get('/updateStatus/{id}', 'StatusController@update');
 
 Route::get('/test','TestController@index');
+Route::get('/addTest','TestController@addTest');
+Route::get('/createTest','TestController@create');
+Route::get('/showTest/{id}','TestController@view');
+Route::get('/updateTest/{id}','TestController@update');

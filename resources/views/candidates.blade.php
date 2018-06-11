@@ -32,8 +32,8 @@
     <br>
     <div>
       <a class="btn btn-success" href="/addCandidate">New candidates</a>
-    </div><br>
-
+    </div>
+    <br>
     <table class="table table-hover table-bordered" style="width:100%">
       <thead class="thead-light">
         <tr>
