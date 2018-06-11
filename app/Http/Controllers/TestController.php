@@ -32,10 +32,18 @@ class TestController extends Controller{
 
   public function update(Request $request, $id){
     if(isset($_GET["del"])){
-      DB::table('tests')
+      $check = DB::table('scores')
       ->where('testId',$id)
-      ->delete();
-      $message="Delete successful";
+      ->exists();
+
+      if(!$check){
+        DB::table('tests')
+        ->where('testId',$id)
+        ->delete();
+        $message="Delete successful";
+      }else{
+        $message="Please delete associated score first.";
+      }
     }else{
       DB::table('tests')
       ->where('testId',$id)
