@@ -35,15 +35,28 @@ class CandidateController extends Controller{
   * @return \Illuminate\Http\Response
   */
   public function create(){
-    $sql="SELECT * FROM status";
-    $status=DB::select($sql);
-    return view('createCandidate', ['status' => $status]);
+    $status=DB::table('status')->get();
+    $test = DB::table('tests')->get();
+    return view('createCandidate', ['status' => $status, 'test'=>$test]);
   }
 
   public function save(){
     DB::insert("INSERT INTO `candidates` (`candidateId`, `name`, `surname`, `dateOfBirth`, `gender`, `tel`, `statusId`, `remark`)".
     " VALUES ( NULL, :name, :surname, :dateOfBirth, :gender, :tel, :statusId, :remark)",
     [$_GET["name"], $_GET["surname"], $_GET["dob"], $_GET["gender"], $_GET["tel"], $_GET["statusId"], $_GET["remark"]]);
+    $i=0;
+    $id = DB::table('candidates')->orderby('candidateId','desc')->first();
+
+    $testname = $_GET["testname"];
+    $score = $_GET["score"];
+    foreach (array_combine($testname, $score) as $testname=>$score) {
+      DB::table('scores')->insert([
+        'candidateId'=>$id->candidateId,
+        'testId' =>$testname,
+        'score'=>$score
+      ]);
+      $i++;
+    }
 
     $id = DB::select("SELECT MAX(candidateId) AS candidateId FROM candidates");
     foreach ($id as $i) {
@@ -89,8 +102,15 @@ public function show(Request $request, $id){
   $status=DB::select($sql);
   $position = DB::table('positions')->where('candidateId', $id)->first();
   $data=DB::table('candidates')->where('candidateId', $id)->first();
-
-  return view('createCandidate',['data'=>$data,'status' => $status, 'position'=>$position]);
+  $test = DB::table('tests')->get();
+  $candiScore = DB::table('scores')->where('candidateId', $id)->get();
+  return view('createCandidate',[
+    'data'=>$data,
+    'test'=>$test,
+    'status' => $status,
+    'position'=>$position,
+    'candiScore'=>$candiScore
+  ]);
 }
 
 /**
