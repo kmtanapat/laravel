@@ -114,7 +114,7 @@ public function show(Request $request, $id){
       ->select('candidates.*', 'identity.identityname')
       ->first();
   $test = DB::table('tests')->get();
-  $candiScore = DB::table('scores')->where('candidateId', $id);
+  $candiScore = DB::table('scores')->where('candidateId', $id)->get();
 
   $iden = DB::table('identity')->get();
 
