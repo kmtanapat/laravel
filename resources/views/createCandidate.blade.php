@@ -45,7 +45,7 @@
             <div class="form-group">
               <label for="gender">Gender: </label>
               <select class="form-control" id="gender" name="gender" required>
-                <option>---</option>
+                <option value="">---</option>
                 <?php
                 if($data->gender=='M'){
                   ?>
@@ -75,7 +75,7 @@
             <div class="form-group">
               <label for="status">Status: </label>
               <select class="form-control" id="gender" value="{{$data->statusId}}" name="statusId" required>
-                <option>---</option>
+                <option value="">---</option>
                 @foreach ($status as $s)
                 @if ($s->statusId == $data->statusId)
                 <option selected value="{{ $s->statusId }}">{{ $s->statusName }}</option>
@@ -87,7 +87,6 @@
             </div>
           </div>
         </div>
-
         <div class="form-group">
           Remark:
           <textarea name="remark" class="form-control">{{$data->remark}}</textarea>
@@ -137,14 +136,13 @@
             <div class="form-group">
               <label>Test Name:</label>
               <select class="form-control" name="testname[]" >
-                <option>--</option>
-
+                <option value="">--</option>
                 @foreach($test as $t)
                   @if ($cs->testId == $t->testId)
                     <option value="{{$t->testId}}" selected>{{$t->testName}}</option>
                   @else
                     <option value="{{$t->testId}}">{{$t->testName}}</option>
-                  @endif                    
+                  @endif
                 @endforeach
               </select>
             </div>
@@ -152,7 +150,7 @@
           <div class="col-sm">
             <div class="form-group">
               <label>Score:</label>
-              <input type="number" name="score[]" class="form-control" value="{{$cs->score}}">
+              <input required type="number" name="score[]" class="form-control" value="{{$cs->score}}">
             </div>
           </div>
         </div>
@@ -198,7 +196,7 @@
             <div class="form-group">
               <label for="gender">Gender: </label>
               <select class="form-control" id="gender" name="gender" required>
-                <option>---</option>
+                <option value="">---</option>
                 <option value="M">Male</option>
                 <option value="F">Female</option>
               </select>
@@ -217,7 +215,7 @@
             <div class="form-group">
               <label for="status">Status: </label>
               <select class="form-control" id="gender" name="statusId" required>
-                <option>---</option>
+                <option value="">---</option>
                 @foreach ($status as $s)
                 <option value="{{$s->statusId}}">{{$s->statusName}}</option>
                 @endforeach
@@ -272,7 +270,7 @@
             <div class="form-group">
               <label>Test Name:</label>
               <select class="form-control" name="testname[]" >
-                <option>--</option>
+                <option value="">--</option>
                 @foreach($test as $t)
                   <option value="{{$t->testId}}">{{$t->testName}}</option>
                 @endforeach
@@ -316,7 +314,7 @@
           '<div class="form-group">'+
             '<label>Test Name:</label>'+
             '<select class="form-control" name="testname[]" >'+
-            '<option>--</option>'+
+            '<option value="">--</option>'+
             @foreach($test as $t)
               '<option value="{{$t->testId}}">{{$t->testName}}</option>'+
             @endforeach
@@ -326,7 +324,7 @@
         '<div class="col-sm">'+
           '<div class="form-group">'+
             '<label>Score:</label>'+
-            '<input type="number" name="score[]" class="form-control">'+
+            '<input required type="number" name="score[]" class="form-control">'+
           '</div>'+
         '</div>'+
       '</div>';

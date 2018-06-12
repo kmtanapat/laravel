@@ -169,6 +169,25 @@ public function update(){
       'statusId'=>$_GET["statusId"],
       'remark'=>$_GET["remark"]]
     );
+
+    if($_GET["testname"]!="" && $_GET["score"]!=""){
+      $testname = $_GET["testname"];
+      $score = $_GET["score"];
+      DB::table('scores')
+      ->where('candidateId', $_GET["id"])
+      ->delete();
+      foreach (array_combine($testname, $score) as $testname=>$score) {
+        if($testname!=""){
+        DB::table('scores')->insert([
+          'candidateId'=>$_GET["id"],
+          'testId' =>$testname,
+          'score'=>$score
+        ]);
+      }
+
+      }
+    }
+
     $recent = DB::select("SELECT c.*, s.statusName as statusN, p.positionName as position FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN positions p ON p.candidateId = c.candidateId WHERE c.candidateId = ".$_GET["id"]);
     return view('candidates', ['candidates' => $recent, 'text'=>"Editted Successful"]);
   }
