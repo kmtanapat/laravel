@@ -259,7 +259,7 @@
             <div class="form-group">
               <label>Identity:</label>
               <select class="form-control" name="identityid" >
-                @foreach($iden as $i)
+                @foreach($identity as $i)
                   <option value="{{$i->identityid}}">{{$i->identityname}}</option>
                 @endforeach
               </select>

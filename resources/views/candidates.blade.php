@@ -49,7 +49,7 @@
             <th scope="col"><a href="/sort/surname/DESC">Surname</a></th>
             <th scope="col">Gender</th>
             <th scope="col">Tel</th>
-            <th scope="col">Indentity</th>
+            <th scope="col">Identity</th>
             <th scope="col">Age</th>
             <th scope="col"><a href="/sort/statusId/DESC">Status</a></th>
             <th scope="col">Position</th>
@@ -61,7 +61,7 @@
             <th scope="col"><a href="/sort/surname/ASC">Surname</a></th>
             <th scope="col">Gender</th>
             <th scope="col">Tel</th>
-            <th scope="col">Indentity</th>
+            <th scope="col">Identity</th>
             <th scope="col">Age</th>
             <th scope="col"><a href="/sort/statusId/ASC">Status</a></th>
             <th scope="col">Position</th>

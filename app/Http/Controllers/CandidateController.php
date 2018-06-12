@@ -46,8 +46,8 @@ class CandidateController extends Controller{
   }
 
   public function save(){
-    DB::insert("INSERT INTO `candidates` (`candidateId`, `name`, `surname`, `dateOfBirth`, `gender`, `tel`, `statusId`, `identityid` `remark`)".
-    " VALUES ( NULL, :name, :surname, :dateOfBirth, :gender, :tel, :statusId, :identityid, :remark)",
+    DB::insert("INSERT INTO `candidates` (`candidateId`, `name`, `surname`, `dateOfBirth`, `gender`, `tel`, `statusId`, `identityid`, `remark`)".
+    " VALUES ( NULL, :name, :surname, :dateOfBirth, :gender, :tel, :statusId, :identityid, :remark) ",
     [$_GET["name"], $_GET["surname"], $_GET["dob"], $_GET["gender"], $_GET["tel"], $_GET["statusId"], $_GET["identityid"], $_GET["remark"]]);
     $i=0;
     $id = DB::table('candidates')->orderby('candidateId','desc')->first();
@@ -73,8 +73,10 @@ class CandidateController extends Controller{
       "currentSalary"=>$_GET["curSalary"],
       "expectedSalary"=>$_GET["exSalary"]
     ]);
+
+    $iden = DB::table('identity')->get();
     $recent = DB::select("SELECT c.*, s.statusName as statusN, p.positionName as position,i.identityname as iden FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN identity i ON i.identityid = c.identityid LEFT JOIN positions p ON p.candidateId = c.candidateId ORDER BY candidateId DESC LIMIT 1");
-    return view('candidates', ['candidates' => $recent, 'text'=>"Candidate added."]);
+    return view('candidates', ['candidates' => $recent, 'identity'=>$iden, 'text'=>"Candidate added."]);
   }
 
   public function sort(Request $request, $sortby, $order){
@@ -114,13 +116,15 @@ public function show(Request $request, $id){
   $test = DB::table('tests')->get();
   $candiScore = DB::table('scores')->where('candidateId', $id);
 
+  $iden = DB::table('identity')->get();
 
   return view('createCandidate',[
     'data'=>$data,
     'test'=>$test,
     'status' => $status,
     'position'=>$position,
-    'candiScore'=>$candiScore
+    'identity'=>$iden,
+    'candiScore'=>$candiScore    
   ]);
 }
 
