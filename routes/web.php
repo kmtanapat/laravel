@@ -15,6 +15,7 @@
 Route::get('/', 'Auth\LoginController@index');
 
 Route::get('/index', 'MainController@index');
+Route::get('/editAppointment/{id}','MainController@editApm');
 
 Route::get('/candidate', 'CandidateController@index');
 Route::get('/search','CandidateController@search');
