@@ -32,4 +32,9 @@ class AppointmentController extends Controller
     return view('appointmentstype', ['apm' => $apm, 'message'=>"Appointment Deleted"]);
   }
 
+  public function edit(Request $request, $id){
+    $apm = DB::table('appointmentstype')->where('appointmentsTypeId', $id)->first();
+    return view('createApm', ['apm'=>$apm]);
+  }
+
 }

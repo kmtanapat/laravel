@@ -43,3 +43,4 @@ Route::get('/createApm','AppointmentController@create');
 Route::get('/saveApm','AppointmentController@save');
 Route::get('/delApm/{id}','AppointmentController@delete');
 Route::get('/editApm/{id}','AppointmentController@edit');
+Route::get('/updateApm/{id}','AppointmentController@update');

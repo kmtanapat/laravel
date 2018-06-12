@@ -12,6 +12,8 @@
 <body>
   @include('navbar')
   <div class="container">
+
+    @if(!isset($apm))
     <h1>Create Appointment Type</h1>
     <form action="/saveApm">
     <p>
@@ -27,6 +29,24 @@
       <input type="submit" class="btn btn-success">
     </div>
   </form>
+  @else
+  <h1>{{$apm->appointmentName}}'s Info</h1>
+  <form action="/updateApm/{{$apm->appointmentsTypeId}}">
+  <p>
+    Appointment Name:
+    <input type="text" name="name" required class="form-control" value="{{$apm->appointmentName}}">
+  </p>
+  <p>
+    Color:
+  <input type="color" name="color" required class="" value="{{$apm->appointmentColor}}">
+
+  </p>
+  <div align="center">
+    <input type="submit" class="btn btn-success" value="Update">
+  </div>
+</form>
+
+  @endif
   </div>
 
 

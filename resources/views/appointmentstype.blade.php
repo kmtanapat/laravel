@@ -13,8 +13,13 @@
   @include('navbar')
   <div class="container">
     <h1>Appointment</h1>
+    @if(isset($message))
+    <div class="alert alert-success" role="alert">
+      {{$message}}
+    </div>
+    @endif
     <p>
-      <a href="createApm" class="btn btn-success">Add Appointment Type</a>
+      <a href="/createApm" class="btn btn-success">Add Appointment Type</a>
     </p>
     <table class="table table-hover table-bordered" style="width:100%">
       <thead class="thead-light">
