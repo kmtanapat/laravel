@@ -104,7 +104,11 @@
           <div class="col-sm">
             <div class="form-group">
               <label>Position:</label>
+              @if(isset($position->positionName))
               <input type="text" id="" name="posName" value="{{$position->positionName}}" class="form-control">
+              @else
+              <input type="text" id="" name="posName" value="" class="form-control">
+              @endif
             </div>
           </div>
         </div>
@@ -113,13 +117,21 @@
           <div class="col-sm">
             <div class="form-group">
               <label>Current Salary:</label>
+              @if(isset($position->currentSalary))
               <input type="number" name="curSalary" class="form-control" value="{{$position->currentSalary}}">
+              @else
+                <input type="number" name="curSalary" class="form-control" value="">
+              @endif
             </div>
           </div>
           <div class="col-sm">
             <div class="form-group">
               <label>Expected Salary:</label>
+              @if(isset($position->expectedSalary))
               <input type="number" name="exSalary" class="form-control" value="{{$position->expectedSalary}}">
+              @else
+              <input type="number" name="exSalary" class="form-control" value="">
+              @endif
             </div>
           </div>
         </div>
@@ -138,11 +150,11 @@
               <select class="form-control" name="testname[]" >
                 <option value="">--</option>
                 @foreach($test as $t)
-                  @if ($cs->testId == $t->testId)
-                    <option value="{{$t->testId}}" selected>{{$t->testName}}</option>
-                  @else
-                    <option value="{{$t->testId}}">{{$t->testName}}</option>
-                  @endif
+                @if ($cs->testId == $t->testId)
+                <option value="{{$t->testId}}" selected>{{$t->testName}}</option>
+                @else
+                <option value="{{$t->testId}}">{{$t->testName}}</option>
+                @endif
                 @endforeach
               </select>
             </div>
@@ -272,7 +284,7 @@
               <select class="form-control" name="testname[]" >
                 <option value="">--</option>
                 @foreach($test as $t)
-                  <option value="{{$t->testId}}">{{$t->testName}}</option>
+                <option value="{{$t->testId}}">{{$t->testName}}</option>
                 @endforeach
               </select>
             </div>
@@ -310,29 +322,29 @@
     $("#add").click(function(){
       count++;
       var scoreSelect = '<div class="row" id="s'+count+'">'+
-        '<div class="col-sm">'+
-          '<div class="form-group">'+
-            '<label>Test Name:</label>'+
-            '<select class="form-control" name="testname[]" >'+
-            '<option value="">--</option>'+
-            @foreach($test as $t)
-              '<option value="{{$t->testId}}">{{$t->testName}}</option>'+
-            @endforeach
-            '</select>'+
-          '</div>'+
-        '</div>'+
-        '<div class="col-sm">'+
-          '<div class="form-group">'+
-            '<label>Score:</label>'+
-            '<input required type="number" name="score[]" class="form-control">'+
-          '</div>'+
-        '</div>'+
+      '<div class="col-sm">'+
+      '<div class="form-group">'+
+      '<label>Test Name:</label>'+
+      '<select class="form-control" name="testname[]" >'+
+      '<option value="">--</option>'+
+      @foreach($test as $t)
+      '<option value="{{$t->testId}}">{{$t->testName}}</option>'+
+      @endforeach
+      '</select>'+
+      '</div>'+
+      '</div>'+
+      '<div class="col-sm">'+
+      '<div class="form-group">'+
+      '<label>Score:</label>'+
+      '<input required type="number" name="score[]" class="form-control">'+
+      '</div>'+
+      '</div>'+
       '</div>';
       $("#moreScore").append(scoreSelect);
     });
     $("#del").click(function(){
       $("#s"+count).remove();
-        count--;
+      count--;
     });
   });
   </script>
