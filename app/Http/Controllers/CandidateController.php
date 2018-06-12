@@ -170,21 +170,22 @@ public function update(){
       'remark'=>$_GET["remark"]]
     );
 
-    if($_GET["testname"]!="" && $_GET["score"]!=""){
-      $testname = $_GET["testname"];
-      $score = $_GET["score"];
-      DB::table('scores')
-      ->where('candidateId', $_GET["id"])
-      ->delete();
-      foreach (array_combine($testname, $score) as $testname=>$score) {
-        if($testname!=""){
-        DB::table('scores')->insert([
-          'candidateId'=>$_GET["id"],
-          'testId' =>$testname,
-          'score'=>$score
-        ]);
-      }
-
+    if(isset($_GET["testname"])){
+      if($_GET["testname"]!="" && $_GET["score"]!=""){
+        $testname = $_GET["testname"];
+        $score = $_GET["score"];
+        DB::table('scores')
+        ->where('candidateId', $_GET["id"])
+        ->delete();
+        foreach (array_combine($testname, $score) as $testname=>$score) {
+          if($testname!=""){
+            DB::table('scores')->insert([
+              'candidateId'=>$_GET["id"],
+              'testId' =>$testname,
+              'score'=>$score
+            ]);
+          }
+        }
       }
     }
 

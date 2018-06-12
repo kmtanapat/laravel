@@ -23,9 +23,13 @@ class AppointmentController extends Controller
 
     ]);
     $apm = DB::table('appointmentstype')->get();
-    return view('appointmentstype', ['apm' => $apm, 'message'=>""]);
+    return view('appointmentstype', ['apm' => $apm, 'message'=>"Appointment Created"]);
+  }
 
-
+  public function delete(Request $request, $id){
+    DB::table('appointmentstype')->where('appointmentsTypeId', $id)->delete();
+    $apm = DB::table('appointmentstype')->get();
+    return view('appointmentstype', ['apm' => $apm, 'message'=>"Appointment Deleted"]);
   }
 
 }
