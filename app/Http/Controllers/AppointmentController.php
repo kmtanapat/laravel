@@ -41,11 +41,22 @@ class AppointmentController extends Controller
     DB::table('appointmentstype')
     ->where('appointmentsTypeId', $id)
     ->update([
-      'appointmentName'=>$_GET["name"], 
+      'appointmentName'=>$_GET["name"],
       'appointmentColor'=>$_GET["color"]
     ]);
     $apm = DB::table('appointmentstype')->get();
     return view('appointmentstype', ['apm' => $apm, 'message'=>"Appointment Updated"]);
+  }
+
+  public function newApm(){
+    DB::table('appointments')->insert([
+      'appointmentsTypeId'=>$_GET["type"],
+      'candidateId'=>$_GET["cid"],
+      'dateStart'=>$_GET["from"],
+      'dateEnd'=>$_GET["to"]
+    ]);
+    //$apm = DB::table('appointmentstype')->get();
+    return redirect()->action('MainController@index');
   }
 
 }

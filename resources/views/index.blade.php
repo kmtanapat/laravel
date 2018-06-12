@@ -35,13 +35,19 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <form action="/newApm">
         <div class="modal-body">
           <div class="row">
             <div class="col-sm">
               <div class="form-group">
                 <label>Select Candidate:</label>
-                <select class="form-control">
+                <select class="form-control" required name="cid">
                   <option>--</option>
+                  @if(isset($candidates))
+                    @foreach($candidates as $c)
+                      <option value="{{$c->candidateId}}">{{$c->name}} {{$c->surname}}</option>
+                    @endforeach
+                  @endif
                 </select>
               </div>
             </div>
@@ -50,8 +56,13 @@
             <div class="col-sm">
               <div class="form-group">
                 <label>Type:</label>
-                <select class="form-control">
+                <select class="form-control" required name="type">
                   <option>--</option>
+                  @if(isset($detail))
+                    @foreach($detail as $d)
+                      <option value="{{$d->appointmentsTypeId}}">{{$d->appointmentName}}</option>
+                    @endforeach
+                  @endif
                 </select>
               </div>
             </div>
@@ -60,25 +71,29 @@
             <div class="col-sm">
               <div class="form-group">
                 <label>From: </label>
-                <input type="datetime-local" class="form-control">
+                <input type="datetime-local" name="from" class="form-control">
               </div>
             </div>
             <div class="col-sm">
               <div class="form-group">
                 <label>To: </label>
-                <input type="datetime-local" class="form-control">
+                <input type="datetime-local" name="to" class="form-control">
               </div>
             </div>
           </div>
-          <div align="center">
-            <input type="submit" class="btn btn-success">
+          <div class="row">
+            <div class="col-sm">
+            <label>Remark: </label>
+            <textarea class="form-control" name="remark"></textarea>
+          </div>
           </div>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
+      </form>
       </div>
     </div>
   </div>
@@ -101,11 +116,12 @@
           $('#calendar').fullCalendar('gotoDate', date);
         }
       },
+      themeSystem: 'bootstrap4',
       header: {
-        left: 'month,agendaWeek,agendaDay',
-        center: 'title',
-        right: 'prev,next today'
-      },
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay listMonth'
+        },
       events:[
         @foreach($appointment as $a)
         {
