@@ -23,6 +23,7 @@ Route::get('/save', 'CandidateController@save');
 Route::get('/sort/{sortby}/{order}','CandidateController@sort');
 Route::get('/show/{id}', 'CandidateController@show');
 Route::get('/update', 'CandidateController@update');
+Route::get('/updateIden/{id}','CandidateController@updateIden');
 
 Route::get('/status', 'StatusController@index');
 Route::get('/newStatus', 'StatusController@new');
@@ -30,6 +31,7 @@ Route::get('/createStatus', 'StatusController@create');
 Route::get('/edit/{id}', 'StatusController@edit');
 Route::get('/delete/{id}', 'StatusController@delete');
 Route::get('/updateStatus/{id}', 'StatusController@update');
+
 
 Route::get('/test','TestController@index');
 Route::get('/addTest','TestController@addTest');

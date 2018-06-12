@@ -18,14 +18,16 @@ class CandidateController extends Controller{
           'LEFT JOIN identity i ON i.identityid = c.identityid '.
           'LEFT JOIN positions p ON p.candidateId = c.candidateId ';
     $candidates = DB::select($sql);
-    return view('candidates',['candidates' => $candidates]);
+    $iden = DB::table('identity')->get();
+    return view('candidates',['candidates' => $candidates, 'identity'=>$iden]);
   }
 
   public function search(){
     $search =$_GET["search"];
-    $sql = "SELECT c.*, s.statusName as statusN, p.positionName as position FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN positions p ON p.candidateId = c.candidateId WHERE name LIKE '%".$search."%' OR surname LIKE '%".$search."%' OR remark LIKE '%".$search."%'";
+    $sql = "SELECT c.*, s.statusName as statusN, p.positionName as position ,i.identityname as iden FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN identity i ON i.identityid = c.identityid LEFT JOIN positions p ON p.candidateId = c.candidateId WHERE name LIKE '%".$search."%' OR surname LIKE '%".$search."%' OR remark LIKE '%".$search."%'";
     $candidates = DB::select($sql);
-    return view('candidates',['candidates' => $candidates]);
+      $iden = DB::table('identity')->get();
+    return view('candidates',['candidates' => $candidates,'identity'=>$iden]);
 
   }
 
@@ -38,6 +40,7 @@ class CandidateController extends Controller{
   public function create(){
     $status=DB::table('status')->get();
     $test = DB::table('tests')->get();
+
     return view('createCandidate', ['status' => $status, 'test'=>$test]);
   }
 
@@ -102,9 +105,13 @@ public function show(Request $request, $id){
   $sql="SELECT * FROM status";
   $status=DB::select($sql);
   $position = DB::table('positions')->where('candidateId', $id)->first();
-  $data=DB::table('candidates')->where('candidateId', $id)->first();
+  $data=DB::table('candidates')->where('candidateId', $id)
+      ->join('identity', 'candidates.identityid','=','identity.identityid')
+      ->first();
   $test = DB::table('tests')->get();
-  $candiScore = DB::table('scores')->where('candidateId', $id)->get();
+  $candiScore = DB::table('scores')->where('candidateId', $id);
+
+
   return view('createCandidate',[
     'data'=>$data,
     'test'=>$test,

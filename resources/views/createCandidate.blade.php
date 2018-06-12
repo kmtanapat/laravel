@@ -111,6 +111,12 @@
               @endif
             </div>
           </div>
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Identity:</label>
+              <input type="text" id="" name="iden" class="form-control">
+            </div>
+          </div>
         </div>
 
         <div class="row">
@@ -242,17 +248,18 @@
           <textarea name="remark" class="form-control"></textarea>
         </div>
         <br>
-        <div class="row">
-          <div class="col-sm">
-            <b>Salary:</b>
-          </div>
-        </div>
 
         <div class="row">
           <div class="col-sm">
             <div class="form-group">
               <label>Position:</label>
               <input type="text" id="" name="posName" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Identity:</label>
+              <input type="text" id="" name="iden" class="form-control">
             </div>
           </div>
         </div>
