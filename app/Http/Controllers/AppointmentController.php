@@ -12,4 +12,20 @@ class AppointmentController extends Controller
     return view('appointmentstype', ['apm' => $apm]);
   }
 
+  public function create(){
+    return view('createApm');
+  }
+
+  public function save(){
+    DB::table('appointmentstype')->insert([
+      'appointmentName'=>$_GET["name"],
+      'appointmentColor' =>$_GET["color"]
+
+    ]);
+    $apm = DB::table('appointmentstype')->get();
+    return view('appointmentstype', ['apm' => $apm, 'message'=>""]);
+
+
+  }
+
 }

@@ -39,3 +39,7 @@ Route::get('/updateTest/{id}','TestController@update');
 Route::get('/deleteTest/{id}','TestController@delete');
 
 Route::get('/appointment','AppointmentController@index');
+Route::get('/createApm','AppointmentController@create');
+Route::get('/saveApm','AppointmentController@save');
+Route::get('/delApm/{id}','AppointmentController@delete');
+Route::get('/editApm/{id}','AppointmentController@edit');
