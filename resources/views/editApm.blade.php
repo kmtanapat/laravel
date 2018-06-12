@@ -14,7 +14,7 @@
 
   <div class="container">
       @if(isset($apm))
-      <form action="/updateApm/{{$apm->appointmentId}}">
+      <form action="/updateAppointment/{{$apm->appointmentId}}">
       <h1>Appointment with {{$apm->name}} {{$apm->surname}}</h1>
       <div class="row">
         <div class="col-sm">
@@ -62,12 +62,12 @@
         <div class="row">
           <div class="col-sm">
             <label>Remark:</label>
-            <textarea class="form-control">{{$apm->description}}</textarea>
+            <textarea name="remark" class="form-control">{{$apm->description}}</textarea>
           </div>
         </div>
         <br>
         <div align="center">
-          <button type="submit" class="btn btn-danger" value="update" name="del">Delete</button>
+          <button type="submit" class="btn btn-danger" value="del" name="del">Delete</button>
           <input type="submit" class="btn btn-success" value="Update">
         </div>
       </form>

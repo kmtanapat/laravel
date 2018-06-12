@@ -38,4 +38,15 @@ class MainController extends Controller{
 
     return view('editApm', ['apm'=>$apm, 'candidates'=>$candidates, 'apminfo'=>$appointmentInfo]);
   }
+
+  public function updateApm(Request $request, $id){
+    if(isset($_GET["del"])){
+      DB::table('appointments')->where('appointmentId', $id)->delete();
+    }else{
+    DB::table('appointments')
+    ->where('appointmentId', $id)
+    ->update(["appointmentsTypeId"=>$_GET["type"], "candidateId"=>$_GET["name"], "dateStart"=>$_GET["from"], "dateEnd"=>$_GET["to"], "description"=>$_GET["remark"]]);
+  }
+  return redirect()->action('MainController@index');
+  }
 }

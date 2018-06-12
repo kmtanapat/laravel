@@ -15,7 +15,7 @@
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4" align="center">Login</h1>
-        <form>
+        <form action="/login">
           <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" class="form-control" id="username" placeholder="P'Big is handsome!">
