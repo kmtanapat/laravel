@@ -12,7 +12,16 @@ class MainController extends Controller{
     ->get();
 
     $appointmentInfo = DB::table('appointmentstype')->get();
+    $candidates = DB::table('candidates')
+    ->select('candidateId','name','surname')
+    ->orderby('name')
+    ->get();
 
-    return view('index', ['appointment'=>$appointment, 'detail'=>$appointmentInfo]);
+  
+    return view('index',
+    ['appointment'=>$appointment,
+    'detail'=>$appointmentInfo,
+    'candidates'=>$candidates
+  ]);
   }
 }
