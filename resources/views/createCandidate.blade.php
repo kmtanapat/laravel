@@ -114,6 +114,14 @@
           <div class="col-sm">
             <div class="form-group">
               <label>Identity:</label>
+              <select class="form-control" id="identityid" value="{{$data->identityid}}" name="identityid" required>
+                @foreach ($data as $s)
+                  @if ($s->identityid == $iden->identityid)
+                    <option selected value="{{ $s->identityid }}">{{ $s->identityname }}</option>
+                  @else
+                    <option value="{{ $s->identityid }}">{{ $s->identityname }}</option>
+              @endif
+              @endforeach
             </div>
           </div>
         </div>
