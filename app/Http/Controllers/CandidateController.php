@@ -77,11 +77,12 @@ class CandidateController extends Controller{
   }
 
   public function sort(Request $request, $sortby, $order){
-    $sql = 'SELECT c.*, s.statusName as statusN, p.positionName as position FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN positions p ON p.candidateId = c.candidateId ORDER BY '.$sortby.' '.$order;
+    $sql = 'SELECT c.*, s.statusName as statusN, p.positionName as position, i.identityname as iden FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN identity i ON i.identityid = c.identityid LEFT JOIN positions p ON p.candidateId = c.candidateId ORDER BY '.$sortby.' '.$order;
     $candidates = DB::select($sql);
-    return view('candidates',
+    $iden = DB::table('identity')->get();
+      return view('candidates',
     ['candidates' => $candidates,
-    'order'=>$order]
+    'order'=>$order, 'identity'=>$iden]
   );
 }
 

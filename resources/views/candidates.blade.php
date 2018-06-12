@@ -25,8 +25,7 @@
 
     <form class="form-inline form-group mb-2" action="/search">
       Search:&nbsp;
-        <input list="search"name="search">
-
+        <input list="search"name="search" placeholder="name or surname">
         <datalist id="search">
             @foreach ($candidates as $candi)
                 <option value="{{$candi->name}}"></option>
