@@ -42,7 +42,7 @@ class CandidateController extends Controller{
     $test = DB::table('tests')->get();
     $iden = DB::table('identity')->get();
 
-    return view('createCandidate', ['status' => $status, 'iden'=>$iden, 'test'=>$test]);
+    return view('createCandidate', ['status' => $status, 'identity'=>$iden, 'test'=>$test]);
   }
 
   public function save(){
@@ -111,7 +111,7 @@ public function show(Request $request, $id){
   $position = DB::table('positions')->where('candidateId', $id)->first();
   $data=DB::table('candidates')->where('candidateId', $id)
       ->join('identity', 'candidates.identityid', '=', 'identity.identityid')
-      ->select('candidates.*', 'identity.indentityname')
+      ->select('candidates.*', 'identity.identityname')
       ->first();
   $test = DB::table('tests')->get();
   $candiScore = DB::table('scores')->where('candidateId', $id);
@@ -124,7 +124,7 @@ public function show(Request $request, $id){
     'status' => $status,
     'position'=>$position,
     'identity'=>$iden,
-    'candiScore'=>$candiScore    
+    'candiScore'=>$candiScore
   ]);
 }
 
