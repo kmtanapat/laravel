@@ -31,7 +31,6 @@ class TestController extends Controller{
   }
 
   public function delete(Request $request, $id){
-
     $check = DB::table('scores')
     ->where('testId',$id)
     ->exists();
@@ -50,7 +49,7 @@ class TestController extends Controller{
 
   }
 
-  public function update(Request $request, $id){    
+  public function update(Request $request, $id){
     DB::table('tests')
     ->where('testId',$id)
     ->update([
