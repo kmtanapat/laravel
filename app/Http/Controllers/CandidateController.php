@@ -12,10 +12,11 @@ class CandidateController extends Controller{
   * @return \Illuminate\Http\Response
   */
   public function index(){
-    $sql = 'SELECT c.*, s.statusName as statusN, p.positionName as position '.
-    'FROM candidates c '.
-    'JOIN status s ON s.statusId = c.statusId '.
-    'LEFT JOIN positions p ON p.candidateId = c.candidateId';
+      $sql = 'SELECT c.*, s.statusName as statusN,i.identityname as iden  ,p.positionName as position '.
+          'FROM candidates c '.
+          'JOIN status s ON s.statusId = c.statusId '.
+          'LEFT JOIN identity i ON i.identityid = c.identityid '.
+          'LEFT JOIN positions p ON p.candidateId = c.candidateId ';
     $candidates = DB::select($sql);
     return view('candidates',['candidates' => $candidates]);
   }

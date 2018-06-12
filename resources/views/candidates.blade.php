@@ -44,7 +44,8 @@
             <th scope="col"><a href="/sort/surname/DESC">Surname</a></th>
             <th scope="col">Gender</th>
             <th scope="col">Tel</th>
-            <th scope="col">Birthday</th>
+            <th scope="col">Indentity</th>
+            <th scope="col">Age</th>
             <th scope="col"><a href="/sort/statusId/DESC">Status</a></th>
             <th scope="col">Position</th>
             <th scope="col">Remark</th>
@@ -55,7 +56,8 @@
             <th scope="col"><a href="/sort/surname/ASC">Surname</a></th>
             <th scope="col">Gender</th>
             <th scope="col">Tel</th>
-            <th scope="col">Birthday</th>
+            <th scope="col">Indentity</th>
+            <th scope="col">Age</th>
             <th scope="col"><a href="/sort/statusId/ASC">Status</a></th>
             <th scope="col">Position</th>
             <th scope="col">Remark</th>
@@ -65,12 +67,18 @@
         </tr>
       </thead>
       @foreach ($candidates as $candi)
-      <?php $year =  date('Y', strtotime($candi->dateOfBirth));?>
+      <?php $year =  date('Y', strtotime($candi->dateOfBirth));
+            $subtel = substr($candi->tel,0,3);
+            $slide ="-";
+            $subtel2 =substr($candi->tel,3,3);
+            $subtel3 =substr($candi->tel,6,4);
+            $tel =$subtel.$slide.$subtel2.$slide.$subtel3;?>
       <tr>
         <td><a href="/show/{{$candi->candidateId}}">{{ $candi->name }}</a></td>
         <td>{{ $candi->surname }}</td>
         <td>{{ $candi->gender }}</td>
-        <td>{{ $candi->tel }}</td>
+        <td>{{ $tel }}</td>
+        <td>{{ $candi->iden }}</td>
         <td>{{ $candi->dateOfBirth }} <br> ({{date("Y")-$year}} years old) </td>
         <td>{{ $candi->statusN }}</td>
         <td>{{ $candi->position }}</td>
