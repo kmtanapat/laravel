@@ -85,14 +85,14 @@
         <td>{{ $candi->gender }}</td>
         <td>{{ $tel }}</td>
         <td>{{ $candi->iden }}
-            <div class="form-group" action="/updatesIden">
-            <select class="form-control">
+            <div class="form-group" action="/updatesIden"style="margin-bottom: 3px">
+            <select class="form-control "style="height: 30px;padding: 0;margin: 0">
                 @foreach ($identity as $i)
-                <option value="{{$i->identityid}}">{{$i->identityname}}</option>
+                <option  value="{{$i->identityid}}">{{$i->identityname}}</option>
                 @endforeach
             </select>
             </div>
-            <input type="submit" class="btn btn-success" value="Save">
+            <input type="submit" class="btn btn-success btn-sm" value="Save">
         </td>
         <td>{{date("Y")-$year}} </td>
         <td>{{ $candi->statusN }}</td>
