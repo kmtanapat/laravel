@@ -18,7 +18,8 @@ Route::get('/index', 'MainController@index');
 Route::get('/editAppointment/{id}','MainController@editApm');
 Route::get('/updateAppointment/{id}','MainController@updateApm');
 
-Route::get('/login','MainController@login');
+Route::post('/login','MainController@login');
+Route::get('/logout','MainController@logout');
 
 Route::get('/candidate', 'CandidateController@index');
 Route::get('/search','CandidateController@search');
