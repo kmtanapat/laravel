@@ -15,17 +15,18 @@
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4" align="center">Login</h1>
-        <form>
+        <form action="/login" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" class="form-control" id="username" placeholder="P'Big is handsome!">
+            <input type="text" class="form-control" id="username" placeholder="P'Big is handsome!" name="usr">
           </div>
           <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" class="form-control" id="password" placeholder="Password" name="psw">
           </div>
           <div align="center">
-            <a href="/index" class="btn btn-primary">Submit</a>
+            <input type="submit" class="btn btn-primary">
           </div>
         </form>
       </div>
