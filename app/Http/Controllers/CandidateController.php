@@ -16,7 +16,7 @@ class CandidateController extends Controller{
           'FROM candidates c '.
           'JOIN status s ON s.statusId = c.statusId '.
           'LEFT JOIN identity i ON i.identityid = c.identityid '.
-          'LEFT JOIN positions p ON p.candidateId = c.candidateId ';
+          'LEFT JOIN positions p ON p.candidateId = c.candidateId order by c.name';
     $candidates = DB::select($sql);
     $iden = DB::table('identity')->get();
     return view('candidates',['candidates' => $candidates, 'identity'=>$iden]);
@@ -40,14 +40,15 @@ class CandidateController extends Controller{
   public function create(){
     $status=DB::table('status')->get();
     $test = DB::table('tests')->get();
+    $iden = DB::table('identity')->get();
 
-    return view('createCandidate', ['status' => $status, 'test'=>$test]);
+    return view('createCandidate', ['status' => $status, 'iden'=>$iden, 'test'=>$test]);
   }
 
   public function save(){
-    DB::insert("INSERT INTO `candidates` (`candidateId`, `name`, `surname`, `dateOfBirth`, `gender`, `tel`, `statusId`, `remark`)".
-    " VALUES ( NULL, :name, :surname, :dateOfBirth, :gender, :tel, :statusId, :remark)",
-    [$_GET["name"], $_GET["surname"], $_GET["dob"], $_GET["gender"], $_GET["tel"], $_GET["statusId"], $_GET["remark"]]);
+    DB::insert("INSERT INTO `candidates` (`candidateId`, `name`, `surname`, `dateOfBirth`, `gender`, `tel`, `statusId`, `identityid` `remark`)".
+    " VALUES ( NULL, :name, :surname, :dateOfBirth, :gender, :tel, :statusId, :identityid, :remark)",
+    [$_GET["name"], $_GET["surname"], $_GET["dob"], $_GET["gender"], $_GET["tel"], $_GET["statusId"], $_GET["identityid"], $_GET["remark"]]);
     $i=0;
     $id = DB::table('candidates')->orderby('candidateId','desc')->first();
 
@@ -72,7 +73,7 @@ class CandidateController extends Controller{
       "currentSalary"=>$_GET["curSalary"],
       "expectedSalary"=>$_GET["exSalary"]
     ]);
-    $recent = DB::select("SELECT c.*, s.statusName as statusN, p.positionName as position FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN positions p ON p.candidateId = c.candidateId ORDER BY candidateId DESC LIMIT 1");
+    $recent = DB::select("SELECT c.*, s.statusName as statusN, p.positionName as position,i.identityname as iden FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN identity i ON i.identityid = c.identityid LEFT JOIN positions p ON p.candidateId = c.candidateId ORDER BY candidateId DESC LIMIT 1");
     return view('candidates', ['candidates' => $recent, 'text'=>"Candidate added."]);
   }
 
@@ -107,7 +108,8 @@ public function show(Request $request, $id){
   $status=DB::select($sql);
   $position = DB::table('positions')->where('candidateId', $id)->first();
   $data=DB::table('candidates')->where('candidateId', $id)
-      ->join('identity', 'candidates.identityid','=','identity.identityid')
+      ->join('identity', 'candidates.identityid', '=', 'identity.identityid')
+      ->select('candidates.*', 'identity.indentityname')
       ->first();
   $test = DB::table('tests')->get();
   $candiScore = DB::table('scores')->where('candidateId', $id);
@@ -143,7 +145,7 @@ public function edit($id)
 public function update(){
   if( isset($_GET["del"]) && $_GET["del"] == "Delete"){
     DB::table('candidates')->where('candidateId','=',$_GET["id"])->delete();
-    $sql = 'SELECT c.*, s.statusName as statusN FROM candidates c JOIN status s ON s.statusId = c.statusId';
+    $sql = 'SELECT c.*, s.statusName as statusN ,i.identityname as iden FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN identity i ON i.identityid = c.identityid';
     $candidates = DB::select($sql);
     return view('candidates',['candidates' => $candidates, 'text'=>"Data deleted"]);
   }else{
@@ -176,6 +178,7 @@ public function update(){
       'gender'=> $_GET["gender"],
       'tel'=>$_GET["tel"],
       'statusId'=>$_GET["statusId"],
+      'identityid'=>$_GET["identityid"],
       'remark'=>$_GET["remark"]]
     );
 
@@ -198,7 +201,7 @@ public function update(){
       }
     }
 
-    $recent = DB::select("SELECT c.*, s.statusName as statusN, p.positionName as position FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN positions p ON p.candidateId = c.candidateId WHERE c.candidateId = ".$_GET["id"]);
+    $recent = DB::select("SELECT c.*, s.statusName as statusN, p.positionName as position,i.identityname as iden FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN identity i ON i.identityid = c.identityid LEFT JOIN positions p ON p.candidateId = c.candidateId WHERE c.candidateId = ".$_GET["id"]);
     return view('candidates', ['candidates' => $recent, 'text'=>"Editted Successful"]);
   }
 

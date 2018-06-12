@@ -114,7 +114,6 @@
           <div class="col-sm">
             <div class="form-group">
               <label>Identity:</label>
-              <input type="text" id="" name="iden" class="form-control">
             </div>
           </div>
         </div>
@@ -259,7 +258,11 @@
           <div class="col-sm">
             <div class="form-group">
               <label>Identity:</label>
-              <input type="text" id="" name="iden" class="form-control">
+              <select class="form-control" name="identityid" >
+                @foreach($iden as $i)
+                  <option value="{{$i->identityid}}">{{$i->identityname}}</option>
+                @endforeach
+              </select>
             </div>
           </div>
         </div>
