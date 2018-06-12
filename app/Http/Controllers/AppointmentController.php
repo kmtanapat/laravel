@@ -37,4 +37,15 @@ class AppointmentController extends Controller
     return view('createApm', ['apm'=>$apm]);
   }
 
+  public function update(Request $request, $id){
+    DB::table('appointmentstype')
+    ->where('appointmentsTypeId', $id)
+    ->update([
+      'appointmentName'=>$_GET["name"], 
+      'appointmentColor'=>$_GET["color"]
+    ]);
+    $apm = DB::table('appointmentstype')->get();
+    return view('appointmentstype', ['apm' => $apm, 'message'=>"Appointment Updated"]);
+  }
+
 }
