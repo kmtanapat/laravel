@@ -11,42 +11,31 @@
 </head>
 <body>
   @include('navbar')
-
   <div class="container">
-    @if(isset($text))
-    <div class="alert alert-primary" role="alert">
-      {{$text}}
-    </div>
-    @endif
-    <h1>All Status</h1>
+    <h1>Appointment</h1>
     <p>
-      <a class="btn btn-success" href="/newStatus">New Status</a>
+      <a href="createApm" class="btn btn-success">Add Appointment Type</a>
     </p>
     <table class="table table-hover table-bordered" style="width:100%">
       <thead class="thead-light">
         <tr>
-          <td>Name</td>
-          <td>Current Candidates</td>
-          <td>Description</td>
-          <td></td>
+          <th>Test Name</th>
+          <th>Description</th>
+          <th></th>
         </tr>
       </thead>
-
-      @foreach ($status as $s)
-      <tr>
-        <td>{{ $s->statusName }}</td>
-        @if($s->amount == null)
-        <td>0 people</td>
-        @else
-        <td>{{ $s->amount }} people</td>
-        @endif
-        <td>{{ $s->description }}</td>
-        <td style="text-align:center">
-          <a class="btn btn-danger" href="/delete/{{ $s->statusId }}">Delete</a>
-          <a class="btn btn-info" href="/edit/{{ $s->statusId }}">Edit</a>
-        </td>
-      </tr>
-      @endforeach
+      <tbody>
+        @foreach($apm as $a)
+        <tr>
+          <td>{{$a->appointmentName}}</td>
+          <td style="background-color:{{$a->appointmentColor}}">{{$a->appointmentColor}}</td>
+          <td align="center">
+            <a class="btn btn-danger" href="/delApm/{{$a->appointmentsTypeId}}">Delete</a>
+            <a class="btn btn-info" href="/editApm/{{$a->appointmentsTypeId}}">Edit</a>
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
     </table>
   </div>
 
@@ -55,6 +44,5 @@
   <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
 </body>
 </html>

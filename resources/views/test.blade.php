@@ -15,6 +15,11 @@
 
 <div class="container">
   <h1>All Tests</h1>
+  @if(isset($message))
+  <div class="alert alert-success" role="alert">
+{{$message}}
+</div>
+  @endif
   <div>
     <a class="btn btn-success" href="/addTest">New Test</a>
   </div>
