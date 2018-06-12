@@ -14,42 +14,42 @@
   <div class="container">
     @if(!isset($test))
     <form action="/createTest">
-    <h1>New Test</h1>
-    <div class="row">
-      <label>Test Name:</label>
-      <input type="text" name="testName" class="form-control">
+      <h1>New Test</h1>
+      <div class="row">
+        <label>Test Name:</label>
+        <input type="text" name="testName" class="form-control">
+      </div>
+      <div class="row">
+        <label>Description: </label>
+        <input type="text" name="description" class="form-control">
+      </div>
+      <br>
+      <div align="center">
+        <input type="submit" class="btn btn-success">
+      </div>
+      @else
+      <form action="/updateTest/{{$test->testId}}">
+        <h1>{{$test->testName}}</h1>
+        <div class="row">
+          <label>Test Name:</label>
+          <input type="text" name="testName" value="{{$test->testName}}" class="form-control">
+        </div>
+        <div class="row">
+          <label>Description: </label>
+          <input type="text" name="description" value="{{$test->description}}" class="form-control">
+        </div>
+        <br>
+        <div align="center">
+          <input type="submit" class="btn btn-success" value="Update">
+        </div>
+        @endif
+      </form>
     </div>
-    <div class="row">
-      <label>Description: </label>
-      <input type="text" name="description" class="form-control">
-    </div>
-    <br>
-    <div align="center">
-      <input type="submit" class="btn btn-success">
-    </div>
-    @else
-    <form action="/updateTest/{{$test->testId}}">
-    <h1>{{$test->testName}}</h1>
-    <div class="row">
-      <label>Test Name:</label>
-      <input type="text" name="testName" value="{{$test->testName}}" class="form-control">
-    </div>
-    <div class="row">
-      <label>Description: </label>
-      <input type="text" name="description" value="{{$test->description}}" class="form-control">
-    </div>
-    <br>
-    <div align="center">
-      <input type="submit" class="btn btn-success" value="Update"> <button class="btn btn-danger" name="del" value="del">Delete</button>
-    </div>
-    @endif
-  </form>
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-</body>
-</html>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  </body>
+  </html>

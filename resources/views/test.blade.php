@@ -30,6 +30,7 @@
           <th>#</th>
           <th>Test Name</th>
           <th>Description</th>
+          <th></th>
         </tr>
       </thead>
       <?php $x = 1; ?>
@@ -37,9 +38,15 @@
       <tr>
         <td>{{$x++}}</td>
         <td>
-          <a href="/showTest/{{$t->testId}}" >{{$t->testName}} </a>
+          <a  >{{$t->testName}} </a>
         </td>
         <td>{{$t->description}}</td>
+
+          <td style="text-align:center">
+            <a class="btn btn-danger" href="/deleteTest/{{ $t->testId }}">Delete</a>
+            <a class="btn btn-info" href="/showTest/{{$t->testId}}">Edit</a>
+
+        </td>
       </tr>
     @endforeach
 </table>

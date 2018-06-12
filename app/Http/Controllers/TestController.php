@@ -30,30 +30,36 @@ class TestController extends Controller{
     return view('addTest', ['test'=>$test]);
   }
 
-  public function update(Request $request, $id){
-    if(isset($_GET["del"])){
-      $check = DB::table('scores')
-      ->where('testId',$id)
-      ->exists();
+  public function delete(Request $request, $id){
 
-      if(!$check){
-        DB::table('tests')
-        ->where('testId',$id)
-        ->delete();
-        $message="Delete successful";
-      }else{
-        $message="Please delete associated score first.";
-      }
-    }else{
+    $check = DB::table('scores')
+    ->where('testId',$id)
+    ->exists();
+
+    if(!$check){
       DB::table('tests')
       ->where('testId',$id)
-      ->update([
-        'testName' =>$_GET["testName"],
-        'description' =>$_GET["description"]
-      ]
-    );
-    $message="Successfully update";
+      ->delete();
+      $message="Delete successful";
+    }else{
+      $message="Please delete associated score first.";
+    }
+    $tests = DB::table('tests')->get();
+
+    return view('test', ['tests' => $tests, 'message'=>$message]);
+
   }
+
+  public function update(Request $request, $id){    
+    DB::table('tests')
+    ->where('testId',$id)
+    ->update([
+      'testName' =>$_GET["testName"],
+      'description' =>$_GET["description"]
+    ]
+  );
+  $message="Successfully update";
+
 
   $tests = DB::table('tests')->get();
 

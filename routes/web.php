@@ -36,5 +36,6 @@ Route::get('/addTest','TestController@addTest');
 Route::get('/createTest','TestController@create');
 Route::get('/showTest/{id}','TestController@view');
 Route::get('/updateTest/{id}','TestController@update');
+Route::get('/deleteTest/{id}','TestController@delete');
 
 Route::get('/appointment','AppointmentController@index');
