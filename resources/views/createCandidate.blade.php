@@ -156,7 +156,7 @@
               <select class="form-control" name="testname[]" >
                 <option value="">--</option>
                 @foreach($test as $t)
-                @if ($cs->testId == $t->testId)
+                @if ($t->testId == $t->testId)
                 <option value="{{$t->testId}}" selected>{{$t->testName}}</option>
                 @else
                 <option value="{{$t->testId}}">{{$t->testName}}</option>
