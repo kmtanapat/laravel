@@ -48,7 +48,7 @@ return [
       ],
       'sticky'    => true,
       'driver'    => 'mysql',
-      'database'  => 'candidatesystem',
+      'database'  => 'candidateSystem',
       'username'  => 'root',
       'password'  => '',
       'charset' => 'utf8',

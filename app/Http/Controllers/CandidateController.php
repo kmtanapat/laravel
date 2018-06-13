@@ -115,6 +115,7 @@ public function show(Request $request, $id){
       ->first();
   $test = DB::table('tests')->get();
   $candiScore = DB::table('scores')->where('candidateId', $id)->get();
+  
   $iden = DB::table('identity')->get();
 
   return view('createCandidate',[

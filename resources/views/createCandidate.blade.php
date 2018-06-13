@@ -87,18 +87,13 @@
             </div>
           </div>
         </div>
+
         <div class="form-group">
           Remark:
           <textarea name="remark" class="form-control">{{$data->remark}}</textarea>
         </div>
 
         <br>
-
-        <div class="row">
-          <div class="col-sm">
-            <b>Salary:</b>
-          </div>
-        </div>
 
         <div class="row">
           <div class="col-sm">
@@ -111,17 +106,19 @@
               @endif
             </div>
           </div>
+
           <div class="col-sm">
             <div class="form-group">
               <label>Identity:</label>
               <select class="form-control" id="identityid" value="{{$data->identityid}}" name="identityid" required>
-                @foreach ($data as $s)
-                  @if ($s->identityid == $iden->identityid)
+                @foreach ($identity as $s)
+                  @if ($s->identityid == $data->identityid)
                     <option selected value="{{ $s->identityid }}">{{ $s->identityname }}</option>
                   @else
                     <option value="{{ $s->identityid }}">{{ $s->identityname }}</option>
-              @endif
+                  @endif
               @endforeach
+            </select>
             </div>
           </div>
         </div>
