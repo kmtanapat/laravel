@@ -87,7 +87,11 @@
             <div class="form-group" action="/updatesIden"style="margin-bottom: 3px">
             <select class="form-control "style="height: 30px;padding: 0;margin: 0">
                 @foreach ($identity as $i)
-                <option  value="{{$i->identityid}}">{{$i->identityname}}</option>
+                @if($candi->identityid == $i->identityid)
+                <option  selected value="{{$i->identityid}}">{{$i->identityname}}</option>
+                    @else
+                        <option  value="{{$i->identityid}}">{{$i->identityname}}</option>
+                @endif
                 @endforeach
             </select>
             </div>

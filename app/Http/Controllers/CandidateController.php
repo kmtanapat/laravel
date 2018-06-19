@@ -12,7 +12,7 @@ class CandidateController extends Controller{
   * @return \Illuminate\Http\Response
   */
   public function index(){
-      $sql = 'SELECT c.*, s.statusName as statusN,i.identityname as iden  ,p.positionName as position '.
+      $sql = 'SELECT c.*, s.statusName as statusN,i.identityid as identityid,i.identityname as iden  ,p.positionName as position '.
           'FROM candidates c '.
           'JOIN status s ON s.statusId = c.statusId '.
           'LEFT JOIN identity i ON i.identityid = c.identityid '.
