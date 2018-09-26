@@ -8,13 +8,13 @@
 -- Table structure for table `appointments`
 --
 
-CREATE TABLE `appointments` (
-  `appointmentId` int(11) NOT NULL,
-  `appointmentsTypeId` int(11) NOT NULL,
-  `candidateId` int(11) NOT NULL,
-  `dateStart` datetime NOT NULL,
-  `dateEnd` datetime NOT NULL,
-  `description` text
+CREATE TABLE `product` (
+  `pro_id` int(11) NOT NULL,
+  `pro_number` int(11) NOT NULL,
+  `pro_name` int(11) NOT NULL,
+  `pro_detail` datetime NOT NULL,
+  `description` text,
+  PRIMARY KEY (pro_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -33,10 +33,11 @@ INSERT INTO `appointments` (`appointmentId`, `appointmentsTypeId`, `candidateId`
 -- Table structure for table `appointmentstype`
 --
 
-CREATE TABLE `appointmentstype` (
-  `appointmentsTypeId` int(11) NOT NULL,
-  `appointmentName` varchar(100) NOT NULL,
-  `appointmentColor` varchar(10) NOT NULL
+CREATE TABLE `product_type` (
+  `pro_type_id` int(11) NOT NULL,
+  `pro_type_number` varchar(100) NOT NULL,
+  `pro_colorr` varchar(10) NOT NULL
+  PRIMARY KEY (pro_type_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -55,16 +56,15 @@ INSERT INTO `appointmentstype` (`appointmentsTypeId`, `appointmentName`, `appoin
 -- Table structure for table `candidates`
 --
 
-CREATE TABLE `candidates` (
-  `candidateId` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `surname` varchar(255) NOT NULL,
-  `dateOfBirth` date NOT NULL,
+CREATE TABLE `customer` (
+  `cus_id` int(11) NOT NULL,
+  `cus_name` varchar(255) NOT NULL,
+  `cus_surname` varchar(255) NOT NULL,
   `gender` char(2) NOT NULL,
   `tel` varchar(15) NOT NULL,
-  `statusId` int(11) NOT NULL,
-  `identityid` int(11) NOT NULL,
-  `remark` text
+  `remark` text,
+  PRIMARY KEY (cus_id),
+  FOREIGN KEY (com_id) REFERENCES Company
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
