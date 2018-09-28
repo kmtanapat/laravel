@@ -14,8 +14,7 @@ CREATE TABLE `customer`(
   'address' VARCHAR(255) NOT NULL,
   'tel'     VARCHAR(255) NOT NULL ,
   'zone_id' INT(11) NOT NULL ,
-  'com_id' INT(11) NOT NULL ,
-  PRIMARY KEY (cus_id)
+  'com_id' INT(11) NOT NULL
 )ENGINE =InnoDB DEFAULT CHARSET =utf8;
 
 CREATE TABLE `company`(
@@ -25,14 +24,14 @@ CREATE TABLE `company`(
   'tel' VARCHAR(255)
 
 )ENGINE =InnoDB DEFAULT CHARSET =utf8;
+
 CREATE TABLE `product` (
   `pro_id` int(11) NOT NULL,
   `pro_number` int(11) NOT NULL,
   `pro_name` int(11) NOT NULL,
   `pro_quan` INT(11) NOT NULL ,
   `pro_price` datetime NOT NULL,
-  `description` text,
-  PRIMARY KEY (pro_id)
+  `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `order`(
@@ -60,110 +59,61 @@ CREATE TABLE `user`(
   'user_id'INT(11) NOT NULL ,
   'user_name'VARCHAR(255) NOT NULL ,
   'user_pass'VARCHAR(255) NOT NULL ,
-  'auth'VARCHAR(255) NOT NULL,
-  PRIMARY KEY (user_id)
+  'auth'VARCHAR(255) NOT NULL
 )ENGINE =InnoDB DEFAULT CHAR SET =utf8;
 
 CREATE TABLE `zone`(
   'zone_id' INT(11)NOT NULL ,
   'zone_name' VARCHAR(255) NOT NULL ,
   'district' VARCHAR(255) NOT NULL ,
-  PRIMARY KEY (zone_id)
+  'user_id' INT(11) NOT NULL
 )ENGINE =InnoDB DEFAULT CHAR SET =utf8;
 
 
+ALTER TABLE `company`
+    ADD PRIMARY KEY (`com_id`),
+  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+ALTER TABLE `customer`
+    ADD PRIMARY KEY (`cus_id`),
+  MODIFY `cus_id` INT(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+ALTER TABLE `product`
+    ADD PRIMARY KEY (`pro_id`),
+  MODIFY `pro_id`INT(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+ALTER TABLE `order`
+    ADD PRIMARY KEY (`order_id`),
+  MODIFY `order_id` INT (11) NOT NULL AUTO_INCREMENt,AUTO_INCREMENT=1;
+ALTER TABLE `report`
+    ADD PRIMARY KEY (`report_id`),
+  MODIFY `report_id` INT(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+ALTER TABLE `user`
+    ADD PRIMARY KEY (`user_id`),
+  MODIFY `user_id` INT(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 
 
 
 
---
--- Indexes for table `appointments`
---
-ALTER TABLE `appointments`
-  ADD PRIMARY KEY (`appointmentId`);
 
---
--- Indexes for table `appointmentstype`
---
-ALTER TABLE `appointmentstype`
-  ADD PRIMARY KEY (`appointmentsTypeId`);
 
---
--- Indexes for table `candidates`
---
-ALTER TABLE `candidates`
-  ADD PRIMARY KEY (`candidateId`);
 
---
--- Indexes for table `positions`
---
-ALTER TABLE `positions`
-  ADD PRIMARY KEY (`positionId`);
 
---
--- Indexes for table `scores`
---
-ALTER TABLE `scores`
-  ADD PRIMARY KEY (`scoreId`);
 
---
--- Indexes for table `status`
---
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`statusId`);
 
---
--- Indexes for table `tests`
---
-ALTER TABLE `tests`
-  ADD PRIMARY KEY (`testId`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `appointments`
---
-ALTER TABLE `appointments`
-  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
---
--- AUTO_INCREMENT for table `appointmentstype`
---
-ALTER TABLE `appointmentstype`
-  MODIFY `appointmentsTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
---
--- AUTO_INCREMENT for table `candidates`
---
-ALTER TABLE `candidates`
-  MODIFY `candidateId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
---
--- AUTO_INCREMENT for table `positions`
---
-ALTER TABLE `positions`
-  MODIFY `positionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
---
--- AUTO_INCREMENT for table `scores`
---
-ALTER TABLE `scores`
-  MODIFY `scoreId` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `status`
---
-ALTER TABLE `status`
-  MODIFY `statusId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
---
--- AUTO_INCREMENT for table `tests`
---
-ALTER TABLE `tests`
-  MODIFY `testId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+
 COMMIT;
+
+
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
