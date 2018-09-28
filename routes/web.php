@@ -52,3 +52,7 @@ Route::get('/editApm/{id}','AppointmentController@edit');
 Route::get('/updateApm/{id}','AppointmentController@update');
 
 Route::get('/newApm','AppointmentController@newApm');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
