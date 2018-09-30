@@ -19,7 +19,7 @@ class CustomerController extends Controller{
           'LEFT JOIN positions p ON p.candidateId = c.candidateId order by c.name';
     $candidates = DB::select($sql);
     $iden = DB::table('identity')->get();
-    return view('candidates',['candidates' => $candidates, 'identity'=>$iden]);
+    return view('customer',['candidates' => $candidates, 'identity'=>$iden]);
   }
 
   public function search(){
