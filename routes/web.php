@@ -37,7 +37,7 @@ Route::get('/edit/{id}', 'StatusController@edit');
 Route::get('/delete/{id}', 'StatusController@delete');
 Route::get('/updateStatus/{id}', 'StatusController@update');
 
-Route::get('/test','TestController@index');
+Route::get('/customer','CustomerController@index');
 Route::get('/addTest','TestController@addTest');
 Route::get('/createTest','TestController@create');
 Route::get('/showTest/{id}','TestController@view');
