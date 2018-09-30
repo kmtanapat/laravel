@@ -31,6 +31,12 @@
                     </select>
                 </div>
             </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="status">Quantity </label>
+                        <input type="number" id="email" name="email" class="form-control" required>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="moreScore">
@@ -41,38 +47,12 @@
         <div class="row">
             <div class="col-sm">
                 <div class="form-group">
-                    <label for="tel">Thickener </label>
-                    <input type="text" id="tel" name="tel" class="form-control" required>
+                    <label for="tel">Company </label>
+                    <select class="form-control" name="testname[]" >
+                        <option value="">Please select</option>
+                    </select>
                 </div>
             </div>
-            <div class="col-sm">
-                <div class="form-group">
-                    <label for="status">Service Temperature </label>
-                    <input type="text" id="email" name="email" class="form-control" required>
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="form-group">
-                    <label for="tel">Viscosity Range </label>
-                    <input type="text" id="tel" name="tel" class="form-control" required>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm">
-                <div class="form-group">
-                    <label for="tel">Details </label>
-                    <input type="text" id="tel" name="tel" class="form-control" required>
-                </div>
-            </div>
-            <div style="text-align:center">
-                <input type="submit" class="btn btn-success" value="Save">
-            </div>
-        </div>
-        <div style="text-align:center">
-            <input type="submit" class="btn btn-success" value="Save">
-        </div>
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
