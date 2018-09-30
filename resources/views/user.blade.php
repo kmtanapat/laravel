@@ -74,8 +74,8 @@
           <td>4</td>
           <td>arielTheMermaid</td>
           <td>Sales</td>
-          <td>ฮ่องกง</td>
-          <td>เกาลูน</td>
+          <td>ขอนแก่น</td>
+          <td>เมือง</td>
         </tr>
         <tr>
           <td align="center">
@@ -96,8 +96,19 @@
           <td>6</td>
           <td>lnwclaudia</td>
           <td>Sales</td>
-          <td>โซล</td>
-          <td>เมียงดง</td>
+          <td>สมุทรปราการ</td>
+          <td>ศรีราชา</td>
+        </tr>
+        <tr>
+          <td align="center">
+            <i class="fas fa-edit"></i> &nbsp;
+            <i class="fas fa-trash-alt"></i>
+          </td>
+          <td>7</td>
+          <td>apisit1234</td>
+          <td>Sales</td>
+          <td>สุรินทร์</td>
+          <td>กาบเชิง</td>
         </tr>
 
       </tbody>
