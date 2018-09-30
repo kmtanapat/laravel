@@ -15,10 +15,10 @@
         <a class="nav-link" href="/customer">Customer</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/status">Product</a>
+        <a class="nav-link" href="/product">Product</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/test">Orders</a>
+        <a class="nav-link" href="/order">Orders</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/user">User</a>
