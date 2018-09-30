@@ -1,25 +1,5 @@
--- phpMyAdmin SQL Dump
--- version 4.7.7
--- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 18, 2018 at 08:31 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `candidateSystem`
+-- Database: `candy`
 --
 
 -- --------------------------------------------------------
@@ -30,10 +10,44 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appointments` (
   `appointmentId` int(11) NOT NULL,
+  `appointmentsTypeId` int(11) NOT NULL,
   `candidateId` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `dateStart` datetime NOT NULL,
+  `dateEnd` datetime NOT NULL,
   `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`appointmentId`, `appointmentsTypeId`, `candidateId`, `dateStart`, `dateEnd`, `description`) VALUES
+  (1, 1, 2, '2018-06-11 06:00:00', '2018-06-11 16:00:00', NULL),
+  (2, 3, 2, '2018-06-28 15:00:00', '2018-06-28 20:00:00', NULL),
+  (3, 1, 24, '2018-06-24 17:00:00', '2018-06-24 20:00:00', NULL),
+  (4, 2, 16, '2018-06-25 19:00:00', '2018-06-25 20:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointmentstype`
+--
+
+CREATE TABLE `appointmentstype` (
+  `appointmentsTypeId` int(11) NOT NULL,
+  `appointmentName` varchar(100) NOT NULL,
+  `appointmentColor` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `appointmentstype`
+--
+
+INSERT INTO `appointmentstype` (`appointmentsTypeId`, `appointmentName`, `appointmentColor`) VALUES
+  (1, 'Phone', '#4286f4'),
+  (2, 'Interview', '#cab0e8'),
+  (3, 'Skype', '#b4f7c7'),
+  (4, 'Hangout', '#f7f3b4');
 
 -- --------------------------------------------------------
 
@@ -49,6 +63,7 @@ CREATE TABLE `candidates` (
   `gender` char(2) NOT NULL,
   `tel` varchar(15) NOT NULL,
   `statusId` int(11) NOT NULL,
+  `identityid` int(11) NOT NULL,
   `remark` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -56,28 +71,56 @@ CREATE TABLE `candidates` (
 -- Dumping data for table `candidates`
 --
 
-INSERT INTO `candidates` (`candidateId`, `name`, `surname`, `dateOfBirth`, `gender`, `tel`, `statusId`, `remark`) VALUES
-(1, 'John', 'Cena', '1988-05-02', 'M', '083-3333333', 0, 'Accepted. Good potential to be a programmer.'),
-(2, 'Jack', 'Sparrow', '1872-05-14', 'M', '0992221144', 0, 'Wait for second interview.'),
-(3, 'Marie', 'Curie', '1988-06-11', 'F', '098-9999999', 0, 'Chemistry master'),
-(4, 'Ash', 'Ketchum', '2010-04-10', 'M', '0899999999', 0, 'Pokemon master'),
-(5, 'Cherprang', 'Areekul', '1996-05-28', 'F', '09988888767', 0, NULL),
-(6, 'Minerva', 'McGonagal', '1966-05-13', 'F', '0992222222', 0, NULL),
-(7, 'Bella', 'Goth', '1989-05-08', 'F', '0997775555', 0, NULL),
-(8, 'Albus', 'Percival Vulfric Bryan Dumbledore', '1919-05-07', 'M', '0888888888', 0, NULL),
-(9, 'Septimus ', 'Heap', '1999-05-14', 'F', '098888', 0, NULL),
-(10, 'Alan', 'Rickman', '1978-01-08', 'M', '0988888888', 0, NULL),
-(11, 'Norimaki', 'Arale', '2017-06-18', 'F', '0987776666', 0, NULL),
-(12, 'Lily', 'Evans', '1977-08-17', 'F', '0988888888', 0, NULL),
-(13, 'James', 'Potter', '1976-05-30', 'M', '0999999999', 0, NULL),
-(14, 'Prayuth', 'Chanocha', '1965-10-23', 'M', '0922122221', 0, NULL),
-(15, 'Prawit', 'Wongsuwan', '1967-11-10', 'M', '0933333333', 0, 'Have too much watch'),
-(16, 'Jack ', 'Ma', '1992-02-06', 'M', '0998886666', 0, 'Pu\'s big bro'),
-(17, 'Donald', 'Trump', '1917-01-28', 'M', '0988888888', 0, NULL),
-(18, 'Jong Un', 'Kim', '1966-03-25', 'M', '0922222111', 0, 'NUKE!'),
-(19, 'Traxex', 'Drow Ranger', '1982-01-22', 'F', '0999999999', 0, 'Dota2 u know?'),
-(20, 'Lady', 'Gaga', '1956-08-23', 'F', '0888888888', 0, NULL),
-(21, 'Sashihara', 'Rino', '1998-03-07', 'F', '0999999999', 0, NULL);
+INSERT INTO `candidates` (`candidateId`, `name`, `surname`, `dateOfBirth`, `gender`, `tel`, `statusId`, `identityid`, `remark`) VALUES
+  (2, 'Jack', 'Sparrow', '1872-05-14', 'M', '0992221144', 2, 1, 'Wait for second interview.'),
+  (3, 'Marie', 'Curie', '1988-06-11', 'F', '098-9999999', 2, 2, 'Chemistry master'),
+  (4, 'Ash', 'Ketchum', '2010-04-10', 'M', '0899999999', 2, 3, 'Pokemon master'),
+  (5, 'Cherprang', 'Areekul', '1996-05-28', 'F', '09988888767', 13, 4, ''),
+  (6, 'Minerva', 'McGonagal', '1966-05-13', 'F', '0992222222', 2, 1, NULL),
+  (8, 'Albus', 'Percival Vulfric Bryan Dumbledore', '1919-05-07', 'M', '0888888888', 2, 2, NULL),
+  (9, 'Septimus ', 'Heap', '1999-05-14', 'F', '098888', 1, 3, ''),
+  (10, 'Alan', 'Rickman', '1978-01-08', 'M', '0988888888', 2, 4, NULL),
+  (11, 'Norimaki', 'Arale', '2017-06-18', 'F', '0987776666', 2, 1, ''),
+  (12, 'Lily', 'Evans', '1977-08-17', 'F', '0988888888', 2, 2, ''),
+  (13, 'James', 'Potter', '1976-05-30', 'M', '0999999999', 1, 3, NULL),
+  (14, 'Prayuth', 'Chanocha', '1965-10-23', 'M', '0922122221', 1, 4, NULL),
+  (15, 'Prawit', 'Wongsuwan', '1967-11-10', 'M', '0933333333', 1, 2, 'Have too much watch'),
+  (16, 'Jack ', 'Ma', '1992-02-06', 'M', '0998886666', 1, 3, 'Pu\'s big bro'),
+  (17, 'Donald', 'Trump', '1917-01-28', 'M', '0988888888', 2, 2, NULL),
+  (18, 'Jong Un', 'Kim', '1966-03-25', 'M', '0922222111', 2, 1, 'NUKE!'),
+  (19, 'Traxex', 'Drow Ranger', '1982-01-22', 'F', '0999999999', 1, 2, 'Dota2 u know?'),
+  (20, 'Lady', 'Gaga', '1956-08-23', 'F', '0888888888', 13, 3, 'Bad Romance'),
+  (21, 'Sashihara', 'Rino', '1998-03-07', 'F', '0999999999', 1, 3, NULL),
+  (22, 'Percy', 'Jackson', '1995-12-05', 'M', '0822222222', 2, 3, NULL),
+  (23, 'Marry', 'Poppins', '1984-06-09', 'F', '0811111111', 1, 3, ''),
+  (24, 'Conan', 'Edogawa', '2012-04-26', 'M', '0999999999', 13, 3, 'Last candidate died because of him?'),
+  (25, 'Mitchai', 'Bancha', '1973-11-24', 'M', '0222222222', 1, 3, 'Revive from helicopter accident'),
+  (26, 'Toms', 'Hidleston', '1977-05-07', 'M', '0888888888', 1, 3, ''),
+  (27, 'Cornelius', 'Fudge', '1897-11-13', 'M', '0111111111', 1, 1, 'Live in London.'),
+  (30, 'Harry', 'Potter', '1983-07-31', 'M', '0822222222', 1, 2, ''),
+  (31, 'Chritopher', 'Columbus', '1975-04-26', 'M', '02222211', 1, 2, 'Yohohooo'),
+  (32, 'Megan', 'Markles', '1956-09-14', 'F', '0811111224', 2, 1, 'Ohh Princess!');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `identity`
+--
+
+CREATE TABLE `identity` (
+  `identityid` int(11) NOT NULL,
+  `identityname` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `identity`
+--
+
+INSERT INTO `identity` (`identityid`, `identityname`) VALUES
+  (1, '1st_Interview'),
+  (2, '2nd_Interview'),
+  (3, 'Reject'),
+  (4, 'Approve');
 
 -- --------------------------------------------------------
 
@@ -92,6 +135,22 @@ CREATE TABLE `positions` (
   `expectedSalary` int(11) NOT NULL,
   `positionName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `positions`
+--
+
+INSERT INTO `positions` (`positionId`, `candidateId`, `currentSalary`, `expectedSalary`, `positionName`) VALUES
+  (1, 1, 200, 500, 'Pirate of the Caribean'),
+  (2, 6, 20000, 22000, 'Transfiguration Teacher'),
+  (3, 3, 0, 0, 'Banana Eater'),
+  (5, 8, 300, 100000, 'Head of Hogwarts'),
+  (6, 10, 45000, 12000, 'Potion Prof.'),
+  (7, 24, 700, 7000, 'Detective'),
+  (8, 25, 8000, 8001, 'Actor'),
+  (9, 27, 5000, 7000, 'Ministry of Wizard World'),
+  (10, 11, 46900, 70000, 'Detective'),
+  (11, 12, 500, 2000, 'Project Manager');
 
 -- --------------------------------------------------------
 
@@ -123,8 +182,9 @@ CREATE TABLE `status` (
 --
 
 INSERT INTO `status` (`statusId`, `statusName`, `description`) VALUES
-(1, 'Regular Employee', NULL),
-(2, 'Internship student', NULL);
+  (1, 'Regular Employee', ''),
+  (2, 'Internship student', '3 months or 6 months only'),
+  (13, '3 Months Contract', '  urgently required');
 
 -- --------------------------------------------------------
 
@@ -139,6 +199,17 @@ CREATE TABLE `tests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `tests`
+--
+
+INSERT INTO `tests` (`testId`, `testName`, `description`) VALUES
+  (1, 'Toeic', 'English test.'),
+  (2, 'JLPT', 'Japanese test'),
+  (3, 'Toefl', 'English test'),
+  (4, 'HSK', 'Chinese test'),
+  (5, 'Topik', 'Korean test');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -147,6 +218,12 @@ CREATE TABLE `tests` (
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`appointmentId`);
+
+--
+-- Indexes for table `appointmentstype`
+--
+ALTER TABLE `appointmentstype`
+  ADD PRIMARY KEY (`appointmentsTypeId`);
 
 --
 -- Indexes for table `candidates`
@@ -186,19 +263,25 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `appointmentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `appointmentstype`
+--
+ALTER TABLE `appointmentstype`
+  MODIFY `appointmentsTypeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `candidates`
 --
 ALTER TABLE `candidates`
-  MODIFY `candidateId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `candidateId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `positionId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `positionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `scores`
@@ -210,13 +293,13 @@ ALTER TABLE `scores`
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `statusId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `statusId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `testId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `testId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
