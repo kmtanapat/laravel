@@ -34,6 +34,7 @@
         <tbody>
         <tr>
             <td align="center">
+                <i class="far fa-file-alt"></i>
                 <i class="fas fa-edit"></i> &nbsp;
                 <i class="fas fa-trash-alt"></i>
             </td>
@@ -44,6 +45,7 @@
         </tr>
         <tr>
             <td align="center">
+                <i class="far fa-file-alt"></i>
                 <i class="fas fa-edit"></i> &nbsp;
                 <i class="fas fa-trash-alt"></i>
             </td>
@@ -54,6 +56,7 @@
         </tr>
         <tr>
             <td align="center">
+                <i class="far fa-file-alt"></i>
                 <i class="fas fa-edit"></i> &nbsp;
                 <i class="fas fa-trash-alt"></i>
             </td>
@@ -64,6 +67,7 @@
         </tr>
         <tr>
             <td align="center">
+                <i class="far fa-file-alt"></i>
                 <i class="fas fa-edit"></i> &nbsp;
                 <i class="fas fa-trash-alt"></i>
             </td>
@@ -74,6 +78,7 @@
         </tr>
         <tr>
             <td align="center">
+                <i class="far fa-file-alt"></i>
                 <i class="fas fa-edit"></i> &nbsp;
                 <i class="fas fa-trash-alt"></i>
             </td>
@@ -84,6 +89,7 @@
         </tr>
         <tr>
             <td align="center">
+                <i class="far fa-file-alt"></i>
                 <i class="fas fa-edit"></i> &nbsp;
                 <i class="fas fa-trash-alt"></i>
             </td>
@@ -94,6 +100,7 @@
         </tr>
         <tr>
             <td align="center">
+                <i class="far fa-file-alt"></i>
                 <i class="fas fa-edit"></i> &nbsp;
                 <i class="fas fa-trash-alt"></i>
             </td>
