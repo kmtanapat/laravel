@@ -28,6 +28,7 @@
                     <input type="text" id="name" name="name" class="form-control" required>
                 </div>
             </div>
+        </div>
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
@@ -46,16 +47,22 @@
             </div>
             <button type="button" id="add" class="btn btn-outline-success">+</button>
             <button type="button" id="del" class="btn btn-outline-danger" >-</button>
-        </div>
         <div class="row">
             <div class="col-sm">
                 <label>สถานะ</label>
-                <select>
+                <select class="form-control" name="testname[]" >
                     <option value="">Admin</option>
                     <option value="">Sales</option>
                 </select>
             </div>
         </div>
+        <br>
+        <div style="text-align:center">
+            <input type="submit" class="btn btn-success" value="Save">
+            <input type="submit" class="btn btn-danger" value="Clear">
+
+        </div>
+
     </form>
 
 

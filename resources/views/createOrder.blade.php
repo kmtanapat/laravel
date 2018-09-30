@@ -53,6 +53,13 @@
                     </select>
                 </div>
             </div>
+        </div>
+        <br>
+        <div style="text-align:center">
+            <input type="submit" class="btn btn-success" value="Save">
+            <input type="submit" class="btn btn-danger" value="Clear">
+
+        </div>
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
