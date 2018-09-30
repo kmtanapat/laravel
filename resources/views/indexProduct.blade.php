@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>User</title>
+    <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -27,8 +27,11 @@
             <th></th>
             <th>ID</th>
             <th>ชื่อ</th>
-            <th>จังหวัด</th>
-            <th>เขต</th>
+            <th>NLGI</th>
+            <th>ประเภท</th>
+            <th>ฐานน้ำมัน</th>
+            <th>อุณหภูมิ</th>
+            <th>รายละเอียด</th>
         </tr>
         </thead>
         <tbody>
@@ -39,9 +42,12 @@
                 <i class="fas fa-trash-alt"></i>
             </td>
             <td>1</td>
-            <td>baracObama</td>
-            <td>กรุงเทพมหานคร</td>
-            <td>สายไหม</td>
+            <td>2</td>
+            <td>Ausbond 95</td>
+            <td>polyurea</td>
+            <td>Mineral</td>
+            <td>10-180</td>
+            <th>High Temperature</th>
         </tr>
         <tr>
             <td align="center">
@@ -50,64 +56,11 @@
                 <i class="fas fa-trash-alt"></i>
             </td>
             <td>2</td>
-            <td>mickeyM</td>
-            <td>เชียงใหม่</td>
-            <td>หางดง</td>
-        </tr>
-        <tr>
-            <td align="center">
-                <i class="far fa-file-alt"></i>
-                <i class="fas fa-edit"></i> &nbsp;
-                <i class="fas fa-trash-alt"></i>
-            </td>
-            <td>3</td>
-            <td>jackiechan007</td>
-            <td>ประจวบคีรีขันธ์</td>
-            <td>ทับสะแก</td>
-        </tr>
-        <tr>
-            <td align="center">
-                <i class="far fa-file-alt"></i>
-                <i class="fas fa-edit"></i> &nbsp;
-                <i class="fas fa-trash-alt"></i>
-            </td>
-            <td>4</td>
-            <td>arielTheMermaid</td>
-            <td>ขอนแก่น</td>
-            <td>เมือง</td>
-        </tr>
-        <tr>
-            <td align="center">
-                <i class="far fa-file-alt"></i>
-                <i class="fas fa-edit"></i> &nbsp;
-                <i class="fas fa-trash-alt"></i>
-            </td>
-            <td>5</td>
-            <td>prasertjZa007</td>
-            <td>กรุงเทพมหานคร</td>
-            <td>พระนคร</td>
-        </tr>
-        <tr>
-            <td align="center">
-                <i class="far fa-file-alt"></i>
-                <i class="fas fa-edit"></i> &nbsp;
-                <i class="fas fa-trash-alt"></i>
-            </td>
-            <td>6</td>
-            <td>lnwclaudia</td>
-            <td>สมุทรปราการ</td>
-            <td>ศรีราชา</td>
-        </tr>
-        <tr>
-            <td align="center">
-                <i class="far fa-file-alt"></i>
-                <i class="fas fa-edit"></i> &nbsp;
-                <i class="fas fa-trash-alt"></i>
-            </td>
-            <td>7</td>
-            <td>apisit1234</td>
-            <td>สุรินทร์</td>
-            <td>กาบเชิง</td>
+            <td>2</td>
+            <td>Ausbond 89</td>
+            <td>Inorganic</td>
+            <td>Mineral</td>
+            <td>HighTemp</td>
         </tr>
 
         </tbody>
