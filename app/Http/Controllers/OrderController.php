@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller{
   public function index(){
-    $tests = DB::table('tests')->get();
-
-    return view('test', ['tests' => $tests]);
+    return view('indexOrder');
   }
 
   public function addTest(){
