@@ -58,9 +58,9 @@
                     <input type="text" id="tel" name="tel" class="form-control" required>
                 </div>
             </div>
+        </div>
         <div style="text-align:center">
             <input type="submit" class="btn btn-success" value="Save">
-        </div>
         </div>
     </form>
 </div>
