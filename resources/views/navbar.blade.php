@@ -15,14 +15,15 @@
         <a class="nav-link" href="/candidate">Customer</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/status">Status</a>
+        <a class="nav-link" href="/status">Product</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/test">Test</a>
+        <a class="nav-link" href="/test">Orders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/appointment">Appointment</a>
+        <a class="nav-link" href="/appointment">User</a>
       </li>
+
 
     </ul>
     <a href="/logout" class="btn btn-outline-dark">Logout</a>
