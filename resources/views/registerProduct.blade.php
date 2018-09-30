@@ -43,14 +43,21 @@
                     <input type="text" id="email" name="email" class="form-control" required>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-sm">
                 <div class="form-group">
                     <label for="tel">Viscosity Range </label>
                     <input type="text" id="tel" name="tel" class="form-control" required>
                 </div>
             </div>
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="tel">Quantity </label>
+                    <input type="number" id="tel" name="tel" class="form-control" required>
+                </div>
+            </div>
         </div>
-
         <div class="row">
             <div class="col-sm">
                 <div class="form-group">
