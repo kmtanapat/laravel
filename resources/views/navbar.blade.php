@@ -15,13 +15,16 @@
         <a class="nav-link" href="/customer">Customer</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/product">Product</a>
+        <a class="nav-link" href="/products">Products</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/order">Orders</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/user">User</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/reports">Reports</a>
       </li>
 
 
