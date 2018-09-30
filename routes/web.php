@@ -20,9 +20,10 @@ Route::get('/products', 'ProductController@index');
 Route::get('/createProduct', 'ProductController@createProduct');
 
 Route::get('/order','OrderController@index');
+Route::get('/createOrder','OrderController@createOrder');
 
 Route::get('/user','UserController@index');
-
+Route::get('/createUser','UserController@createUser');
 
 
 
