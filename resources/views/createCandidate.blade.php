@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Customer Register</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -190,7 +190,7 @@
       <?php
     }else{
       ?>
-      <h1>Add Candidate Data</h1>
+      <h1>Add Customer Data</h1>
       <form action="/save">
         <div class="row">
           <div class="col-sm">
@@ -235,21 +235,15 @@
           </div>
           <div class="col-sm">
             <div class="form-group">
-              <label for="status">Status: </label>
-              <select class="form-control" id="gender" name="statusId" required>
-                <option value="">---</option>
-                @foreach ($status as $s)
-                <option value="{{$s->statusId}}">{{$s->statusName}}</option>
-                @endforeach
-
-              </select>
+              <label for="status">Email: </label>
+              <input type="text" id="email" name="email" class="form-control" required>
             </div>
           </div>
         </div>
 
         <div class="form-group">
-          Remark:
-          <textarea name="remark" class="form-control"></textarea>
+          Address:
+          <textarea name="address" class="form-control"></textarea>
         </div>
         <br>
 
