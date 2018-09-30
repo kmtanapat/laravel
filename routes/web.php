@@ -11,6 +11,7 @@
 |
 */
 Route::get('/customer', 'CustomerController@index');
+Route::get('/createCustomer', 'CustomerController@createCustomer');
 
 Route::get('/reports','ReportController@index');
 Route::get('/createReport','ReportController@createReport');

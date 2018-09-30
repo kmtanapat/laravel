@@ -22,6 +22,11 @@ class CustomerController extends Controller{
     return view('customer',['candidates' => $candidates, 'identity'=>$iden]);
   }
 
+  public function createCustomer()
+  {
+    return view('createCustomer');
+  }
+
   public function search(){
     $search =$_GET["search"];
     $sql = "SELECT c.*, s.statusName as statusN, p.positionName as position ,i.identityname as iden FROM candidates c JOIN status s ON s.statusId = c.statusId LEFT JOIN identity i ON i.identityid = c.identityid LEFT JOIN positions p ON p.candidateId = c.candidateId WHERE name LIKE '%".$search."%' OR surname LIKE '%".$search."%' OR remark LIKE '%".$search."%'";

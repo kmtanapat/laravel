@@ -37,7 +37,7 @@
     </form>
     <br>
     <div>
-      <a class="btn btn-success" href="/addCandidate">New Customer</a>
+      <a class="btn btn-success" href="/createCustomer">New Customer</a>
     </div>
     <br>
     <table class="table table-hover table-bordered" style="width:100%">

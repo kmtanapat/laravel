@@ -25,7 +25,7 @@
         <thead class="thead-light">
         <tr>
             <th></th>
-            <th>เลขออเดร์</th>
+            <th>เลขออเดอร์</th>
             <th>รหัสสินค้า</th>
             <th>บริษัท</th>
             <th>จังหวัด</th>
