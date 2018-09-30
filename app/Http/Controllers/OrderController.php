@@ -9,19 +9,14 @@ class OrderController extends Controller{
     return view('indexOrder');
   }
 
+  public function createOrder(){
+    return view('createorder');
+  }
+
   public function addTest(){
     return view('addTest');
   }
-
-  public function create(){
-    DB::table('tests')->insert(
-      ['testName'=>$_GET['testName'],
-      'description'=>$_GET['description']]
-    );
-
-    return redirect()->action('TestController@index');
-  }
-
+  
   public function view(Request $request, $id){
     $test = DB::table('tests')->where('testId', $id)->first();
 

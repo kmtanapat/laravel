@@ -19,7 +19,7 @@
     </div>
     @endif
     <p>
-      <a href="/createApm" class="btn btn-success">Create New User</a>
+      <a href="/createUser" class="btn btn-success">Create New User</a>
     </p>
     <table class="table table-hover table-bordered" style="width:100%">
       <thead class="thead-light">

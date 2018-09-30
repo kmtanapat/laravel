@@ -12,7 +12,7 @@
         <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/customer">Customer</a>
+        <a class="nav-link" href="/customer">Customers</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/products">Products</a>
@@ -21,7 +21,7 @@
         <a class="nav-link" href="/order">Orders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/user">User</a>
+        <a class="nav-link" href="/user">Users</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/reports">Reports</a>
