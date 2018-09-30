@@ -21,7 +21,7 @@ Route::get('/updateAppointment/{id}','MainController@updateApm');
 Route::post('/login','MainController@login');
 Route::get('/logout','MainController@logout');
 
-Route::get('/candidate', 'CandidateController@index');
+Route::get('/customer', 'CustomerController@index');
 Route::get('/search','CandidateController@search');
 Route::get('/addCandidate', 'CandidateController@create');
 Route::get('/save', 'CandidateController@save');
@@ -44,7 +44,7 @@ Route::get('/showTest/{id}','TestController@view');
 Route::get('/updateTest/{id}','TestController@update');
 Route::get('/deleteTest/{id}','TestController@delete');
 
-Route::get('/appointment','AppointmentController@index');
+Route::get('/user','UserController@index');
 Route::get('/createApm','AppointmentController@create');
 Route::get('/saveApm','AppointmentController@save');
 Route::get('/delApm/{id}','AppointmentController@delete');
