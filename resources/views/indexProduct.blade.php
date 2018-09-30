@@ -19,7 +19,7 @@
         </div>
     @endif
     <p>
-        <a href="/createApm" class="btn btn-success">Create Reports</a>
+        <a href="/createProduct" class="btn btn-success">Products</a>
     </p>
     <table class="table table-hover table-bordered" style="width:100%">
         <thead class="thead-light">
@@ -39,7 +39,7 @@
         <tr>
             <td align="center">
                 <i class="far fa-file-alt"></i>
-                <i class="fas fa-edit"></i> &nbsp;
+                <i class="fas fa-edit"></i>
                 <i class="fas fa-trash-alt"></i>
             </td>
             <td>1</td>
@@ -49,12 +49,12 @@
             <td>polyurea</td>
             <td>Mineral</td>
             <td>10-180</td>
-            <th>High Temperature</th>
+            <td>High Temperature</td>
         </tr>
         <tr>
             <td align="center">
                 <i class="far fa-file-alt"></i>
-                <i class="fas fa-edit"></i> &nbsp;
+                <i class="fas fa-edit"></i>
                 <i class="fas fa-trash-alt"></i>
             </td>
             <td>2</td>
@@ -63,6 +63,7 @@
             <td>Ausbond 89</td>
             <td>Inorganic</td>
             <td>Mineral</td>
+            <td>15-20</td>
             <td>HighTemp</td>
         </tr>
 

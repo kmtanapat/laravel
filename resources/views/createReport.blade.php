@@ -254,9 +254,8 @@
                     <label>ผลิตภัณฑ์ที่แนะนำ</label>
                     <select class="form-control" name="testname[]" >
                         <option value="">--</option>
-                        @foreach($test as $t)
-                            <option value="{{$t->testId}}">{{$t->testName}}</option>
-                        @endforeach
+                        <option value="">เบนซิน</option>
+                        <option value="">E20</option>
                     </select>
                 </div>
             </div>
