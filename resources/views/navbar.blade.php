@@ -12,17 +12,21 @@
         <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/candidate">Candidates</a>
+        <a class="nav-link" href="/customer">Customers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/status">Status</a>
+        <a class="nav-link" href="/products">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/test">Test</a>
+        <a class="nav-link" href="/order">Orders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/appointment">Appointment</a>
+        <a class="nav-link" href="/user">Users</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/reports">Reports</a>
+      </li>
+
 
     </ul>
     <a href="/logout" class="btn btn-outline-dark">Logout</a>

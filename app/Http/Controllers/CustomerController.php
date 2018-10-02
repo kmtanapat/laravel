@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CandidateController extends Controller{
+class CustomerController extends Controller{
   /**
   * Display a listing of the resource.
   *
@@ -19,7 +19,12 @@ class CandidateController extends Controller{
           'LEFT JOIN positions p ON p.candidateId = c.candidateId order by c.name';
     $candidates = DB::select($sql);
     $iden = DB::table('identity')->get();
-    return view('candidates',['candidates' => $candidates, 'identity'=>$iden]);
+    return view('customer',['candidates' => $candidates, 'identity'=>$iden]);
+  }
+
+  public function createCustomer()
+  {
+    return view('createCustomer');
   }
 
   public function search(){
@@ -115,7 +120,7 @@ public function show(Request $request, $id){
       ->first();
   $test = DB::table('tests')->get();
   $candiScore = DB::table('scores')->where('candidateId', $id)->get();
-  
+
   $iden = DB::table('identity')->get();
 
   return view('createCandidate',[
