@@ -10,8 +10,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-  @include('navbar')
-  <div class="container">
+@extends('layouts.app')
+
+@section('content')  <div class="container">
     @if(!isset($test))
     <form action="/createTest">
       <h1>New Test</h1>
